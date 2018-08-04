@@ -6,6 +6,8 @@ import spock.lang.Unroll
 
 class CheckoutSolutionSpecTest extends Specification {
 
+    static INVALID_PRODUCT_ID = 'X'
+
     @Subject
     def solution = new CheckoutSolution()
 
@@ -14,9 +16,10 @@ class CheckoutSolutionSpecTest extends Specification {
 
 
         where:
-          productsString || expectedPrice
-          null           || -1
-        
+          productsString          || expectedPrice
+          null                    || -1
+          "${INVALID_PRODUCT_ID}" || -1
+
     }
 
 }
