@@ -21,13 +21,25 @@ public class CheckoutSolution {
                                                       .put('C', new Product('C', 20))
                                                       .put('D', new Product('D', 15))
                                                       .build();
-    private final static Map<Character, SpecialOffer> DEFAULT_SPECIAL_OFFERS =
-            ImmutableMap.<Character, SpecialOffer>builder().put('A', new SpecialOffer(DEFAULT_PRODUCTS.get('A'), 3, 130))
-                                                           .put('B', new SpecialOffer(DEFAULT_PRODUCTS.get('B'), 2, 45))
-                                                           .build();
+
+    /**
+     * +------+-------+------------------------+
+     * | Item | Price | Special offers         |
+     * +------+-------+------------------------+
+     * | A    | 50    | 3A for 130, 5A for 200 |
+     * | B    | 30    | 2B for 45              |
+     * | C    | 20    |                        |
+     * | D    | 15    |                        |
+     * | E    | 40    | 2E get one B free      |
+     * +------+-------+------------------------+
+     */
+    private final static Map<Character, DiscountOffer> DEFAULT_DISCOUNT_OFFERS =
+            ImmutableMap.<Character, DiscountOffer>builder().put('A', new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 3, 130))
+                                                            .put('B', new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45))
+                                                            .build();
 
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
-    private final Map<Character, SpecialOffer> specialOffers = DEFAULT_SPECIAL_OFFERS;
+    private final Map<Character, DiscountOffer> specialOffers = DEFAULT_DISCOUNT_OFFERS;
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)
@@ -59,13 +71,13 @@ public class CheckoutSolution {
     private int calculateProductsValue(Multiset.Entry<Product> productEntry) {
         final int productOccurrencesCount = productEntry.getCount();
         final Product product = productEntry.getElement();
-        final SpecialOffer specialOffer = specialOffers.get(product.getId());
+        final DiscountOffer discountOffer = specialOffers.get(product.getId());
 
-        if (specialOffer != null) {
-            final int productsAmountRequiredForOffer = specialOffer.getProductsAmount();
+        if (discountOffer != null) {
+            final int productsAmountRequiredForOffer = discountOffer.getProductsAmount();
             final int applyOfferTimes = productOccurrencesCount / productsAmountRequiredForOffer;
             final int applyOfferToProducts = applyOfferTimes * productsAmountRequiredForOffer;
-            final int discountPriceTotal = specialOffer.getDiscountPrice() * applyOfferTimes;
+            final int discountPriceTotal = discountOffer.getDiscountPrice() * applyOfferTimes;
             final int nonDiscountedProductsAmount = productOccurrencesCount - applyOfferToProducts;
             final int nonDiscountedPriceTotal = nonDiscountedProductsAmount * product.getPrice();
             return discountPriceTotal + nonDiscountedPriceTotal;

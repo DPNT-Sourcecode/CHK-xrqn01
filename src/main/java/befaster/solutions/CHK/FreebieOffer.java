@@ -1,12 +1,12 @@
 package befaster.solutions.CHK;
 
-final class SpecialOffer {
+public class FreebieOffer {
 
     private final Product product;
     private final int productsAmount;
-    private final int discountPrice;
+    private final Product freeProduct;
 
-    SpecialOffer(Product product, int productsAmount, int discountPrice) {
+    FreebieOffer(Product product, int productsAmount, int discountPrice) {
         this.product = product;
         this.productsAmount = productsAmount;
         this.discountPrice = discountPrice;
@@ -28,4 +28,5 @@ final class SpecialOffer {
     public String toString() {
         return "Offer(" + productsAmount + getProductId() + " for " + discountPrice + ')';
     }
+
 }
