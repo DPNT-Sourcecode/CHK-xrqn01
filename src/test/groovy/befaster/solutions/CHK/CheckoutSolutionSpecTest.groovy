@@ -1,19 +1,17 @@
 package befaster.solutions.CHK
 
 import spock.lang.Specification
-import spock.lang.Subject
 import spock.lang.Unroll
 
 class CheckoutSolutionSpecTest extends Specification {
 
     static INVALID_PRODUCT_ID = 'X'
 
-
-    @Subject
-    def solution = new CheckoutSolution()
-
     @Unroll
     "should return #expectedPrice for products=#products and special offers=#specialOffers and given #productsString"() {
+        given:
+          def solution = new CheckoutSolution(products, specialOffers)
+
         when:
           def actualPrice = solution.checkout productsString
 
@@ -29,7 +27,6 @@ class CheckoutSolutionSpecTest extends Specification {
           [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "ABAB"                  || 120
           [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "AABB"                  || 120
           [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "BAABB"                 || 150
-
     }
 
     static offer(String productId, int amount, int price) {

@@ -71,8 +71,9 @@ public class CheckoutSolution {
 
         if (specialOffer != null) {
             final int productsAmountRequiredForOffer = specialOffer.getProductsAmount();
-            final int amountToApplyOffer = productOccurrencesCount / productsAmountRequiredForOffer;
-            return (specialOffer.getDiscountPrice() * amountToApplyOffer) + ((productOccurrencesCount - amountToApplyOffer) * product.getPrice());
+            final int applyOfferTimes = productOccurrencesCount / productsAmountRequiredForOffer;
+            final int applyOfferToProducts = applyOfferTimes *  productsAmountRequiredForOffer;
+            return (specialOffer.getDiscountPrice() * applyOfferTimes) + ((productOccurrencesCount - applyOfferToProducts) * product.getPrice());
         }
         else {
             return productOccurrencesCount * product.getPrice();
