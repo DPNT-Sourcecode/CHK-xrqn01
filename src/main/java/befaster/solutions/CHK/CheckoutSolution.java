@@ -1,8 +1,7 @@
 package befaster.solutions.CHK;
 
+import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
-import com.google.common.collect.SortedMultiset;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,6 +58,13 @@ public class CheckoutSolution {
     }
 
     private int calculatePriceOfSortedProducts(List<Product> products) {
-        new SortedMultiset();
+        Multiset<Product> productsMultiSet = HashMultiset.create(products);
+        productsMultiSet.entrySet()
+                        .stream()
+                        .map(this::toProductValue)
+    }
+
+    private int toProductValue(Multiset.Entry<Product> productEntry) {
+        return 0;
     }
 }
