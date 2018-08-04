@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static java.util.Arrays.asList;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
@@ -26,8 +25,9 @@ public class CheckoutSolution {
                                                                   .put('C', new Product('C', 20))
                                                                   .put('D', new Product('D', 15))
                                                                   .build();
-        this.specialOffers = collectSpecialOffersToMapByProductId(asList(new SpecialOffer(productA, 3, 130),
-                                                                         new SpecialOffer(productB, 2, 45)));
+        this.specialOffers = ImmutableMap.<Character, SpecialOffer>builder().put('A', new SpecialOffer(products.get('A'), 3, 130))
+                                                                            .put('B', new SpecialOffer(products.get('B'), 2, 45))
+                                                                            .build();
     }
 
     public CheckoutSolution(List<Product> products, List<SpecialOffer> specialOffers) {
@@ -47,12 +47,20 @@ public class CheckoutSolution {
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)
-                       .map(s -> s.chars()
-                                  .mapToObj(id -> products.get((char) id))
-                                  .collect(toList()))
-                       .filter(productsList -> !productsList.contains(null))
+                       .map(s -> skusStringToListOfProducts(s))
+                       .filter(this::areProductsValid)
                        .map(this::calculatePriceOfSortedProducts)
                        .orElse(INVALID_PRICE_VALUE);
+    }
+
+    private List<Product> skusStringToListOfProducts(String s) {
+        return s.chars()
+                   .mapToObj(id -> products.get((char) id))
+                   .collect(toList());
+    }
+
+    private boolean areProductsValid(List<Product> productsList) {
+        return !productsList.contains(null);
     }
 
     private int calculatePriceOfSortedProducts(List<Product> products) {
