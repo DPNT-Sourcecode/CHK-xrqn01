@@ -10,6 +10,8 @@ import static java.util.stream.Collectors.toMap;
 
 public class CheckoutSolution {
 
+    private final static int INVALID_PRICE_VALUE = -1;
+
     private final Map<Character, Product> products;
     private final List<SpecialOffer> specialOffers;
 
@@ -25,7 +27,7 @@ public class CheckoutSolution {
     }
 
     public CheckoutSolution(List<Product> products, List<SpecialOffer> specialOffers) {
-        this.products = products;
+        this.products = collectProductsListToMapById(products);
         this.specialOffers = specialOffers;
     }
 
@@ -38,7 +40,10 @@ public class CheckoutSolution {
         return Optional.ofNullable(skus)
                        .map(s -> s.chars()
                                   .sorted()
-                                  .mapToObj())
-                       .orElse(-1);
+                                  .mapToObj(products::get)
+                                  .map(Product::getPrice)
+                                  .reduce(Integer::sum)
+                                  .orElse(INVALID_PRICE_VALUE))
+                       .orElse(INVALID_PRICE_VALUE);
     }
 }

@@ -33,7 +33,7 @@ class CheckoutSolutionSpecTest extends Specification {
     }
 
     static offer(String productId, int amount, int price) {
-        new SpecialOffer(new Product(productId.charAt(0), _ as int), amount, price)
+        new SpecialOffer(new Product(productId.charAt(0), -1), amount, price)
     }
 
     static product(String id, int price) {
