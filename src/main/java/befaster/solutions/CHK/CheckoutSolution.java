@@ -47,6 +47,9 @@ public class CheckoutSolution {
                                              .map(products::containsKey)
                                              .reduce(Boolean::logicalAnd)
                                              .orElse(false))
+                       .map(chars -> chars.stream()
+                                          .map(products::get)
+                                          .collect(toList()))
                        .orElse(INVALID_PRICE_VALUE);
     }
 }
