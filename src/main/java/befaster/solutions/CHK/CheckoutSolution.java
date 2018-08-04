@@ -65,9 +65,8 @@ public class CheckoutSolution {
     }
 
     private int calculatePriceOfProducts(List<Product> products) {
-        int eProductsAmount = (int) products.stream()
-                                            .filter(p -> p.getId() == 'E')
-                                            .count();
+        int bProductsAmount = countProductsWithId(products, 'B');
+        int eProductsAmount = countProductsWithId(products, 'E');
 
         int amountOfEDiscounts = eProductsAmount / 2;
 
@@ -77,6 +76,13 @@ public class CheckoutSolution {
                            .map(this::calculateProductsValue)
                            .reduce(Integer::sum)
                            .orElse(NO_PRODUCTS_VALUE);
+    }
+
+    private int countProductsWithId(List<Product> products, char givenId) {
+        return (int) products.stream()
+                             .map(Product::getId)
+                             .filter(id -> id == givenId)
+                             .count();
     }
 
     private int calculateProductsValue(Multiset.Entry<Product> productEntry) {
