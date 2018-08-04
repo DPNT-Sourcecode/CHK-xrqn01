@@ -15,7 +15,7 @@ public class CheckoutSolution {
     private final static int INVALID_PRICE_VALUE = -1;
     private final static Map<Character, Product> defaultProducts =
             ImmutableMap.<Character, Product>builder().put('A', new Product('A', 50))
-                                                      .put('B', new Product('B', 50))
+                                                      .put('B', new Product('B', 30))
                                                       .put('C', new Product('C', 20))
                                                       .put('D', new Product('D', 15))
                                                       .build();
