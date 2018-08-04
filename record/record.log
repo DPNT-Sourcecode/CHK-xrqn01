@@ -2845,3 +2845,5 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m37s, 20791 frames, 17.96 MB | 38 source captures, 400 ms/capture
 [1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m39s, 20799 frames, 17.96 MB | 38 source captures, 400 ms/capture
 [1;30mINFO  [ExEvent-113][0;39m - Tag state with: CHK_R1/deploy
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m41s, 20807 frames, 17.96 MB | 39 source captures, 217 ms/capture
+[1;30mINFO  [ExEvent-117][0;39m - Tag state with: CHK_R1/done
