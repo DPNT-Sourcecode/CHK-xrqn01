@@ -6,10 +6,10 @@ public class FreebieOffer {
     private final int productsAmount;
     private final Product freeProduct;
 
-    FreebieOffer(Product product, int productsAmount, int discountPrice) {
+    FreebieOffer(Product product, int productsAmount, Product freeProduct) {
         this.product = product;
         this.productsAmount = productsAmount;
-        this.discountPrice = discountPrice;
+        this.freeProduct = freeProduct;
     }
 
     char getProductId() {
@@ -20,13 +20,13 @@ public class FreebieOffer {
         return productsAmount;
     }
 
-    int getDiscountPrice() {
-        return discountPrice;
+    Product getFreeProduct() {
+        return freeProduct;
     }
 
     @Override
     public String toString() {
-        return "Offer(" + productsAmount + getProductId() + " for " + discountPrice + ')';
+        return "Offer(" + productsAmount + getProductId() + " + free " + freeProduct + ')';
     }
 
 }

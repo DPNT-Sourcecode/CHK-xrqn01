@@ -20,7 +20,12 @@ public class CheckoutSolution {
                                                       .put('B', new Product('B', 30))
                                                       .put('C', new Product('C', 20))
                                                       .put('D', new Product('D', 15))
+                                                      .put('E', new Product('E', 40))
                                                       .build();
+
+    static Map<Character, Product> productsListToIdProductMap() {
+        
+    }
 
     /**
      * +------+-------+------------------------+
@@ -38,8 +43,13 @@ public class CheckoutSolution {
                                                             .put('B', new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45))
                                                             .build();
 
+    private final static Map<Character, FreebieOffer> DEFAULT_FREEBIE_OFFERS =
+            ImmutableMap.<Character, FreebieOffer>builder().put('E', new FreebieOffer(DEFAULT_PRODUCTS.get('E'), 3, DEFAULT_PRODUCTS.get('B')))
+                                                           .build();
+
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
     private final Map<Character, DiscountOffer> specialOffers = DEFAULT_DISCOUNT_OFFERS;
+    private final Map<Character, FreebieOffer> freebieOffers = DEFAULT_FREEBIE_OFFERS;
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)
