@@ -17,14 +17,20 @@ class CheckoutSolutionSpecTest extends Specification {
 
 
         where:
-          products | specialOffers | productsString          || expectedPrice
-          []       | []            | null                    || -1
-          []       | []            | "${INVALID_PRODUCT_ID}" || -1
+          products           | specialOffers | productsString          || expectedPrice
+          []                 | []            | null                    || -1
+          [product('A', 50)] | []            | "${INVALID_PRODUCT_ID}" || -1
+          [product('A', 50)] | []            | "A"                     || 50
+          [product('A', 50)] | []            | "A"                     || 50
 
     }
 
-    static product(char id, int price) {
-        new Product(id, price)
+    static offer(String productId, int amount, int price) {
+        new SpecialOffer(new Product(productId.charAt(0), _ as int), amount, price)
+    }
+
+    static product(String id, int price) {
+        new Product(id.charAt(0), price)
     }
 
 }
