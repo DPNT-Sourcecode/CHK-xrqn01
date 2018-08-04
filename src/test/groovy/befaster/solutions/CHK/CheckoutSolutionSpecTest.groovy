@@ -3,6 +3,8 @@ package befaster.solutions.CHK
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static java.util.stream.Collectors.toMap
+
 class CheckoutSolutionSpecTest extends Specification {
 
     static INVALID_PRODUCT_ID = 'X'
@@ -10,7 +12,9 @@ class CheckoutSolutionSpecTest extends Specification {
     @Unroll
     "should return #expectedPrice for products=#products and special offers=#specialOffers and given #productsString"() {
         given:
-          def solution = new CheckoutSolution(products, specialOffers)
+          Map<Character, Product> productsMap = products.stream().collect(toMap({ it.id }, { it }))
+          Map<Character, SpecialOffer> specialOfferMap = specialOffers.stream().collect(toMap({ it.productId }, { it }))
+          def solution = new CheckoutSolution(productsMap, specialOfferMap)
 
         when:
           def actualPrice = solution.checkout productsString

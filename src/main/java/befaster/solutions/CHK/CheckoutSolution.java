@@ -40,7 +40,7 @@ public class CheckoutSolution {
         return Optional.ofNullable(skus)
                        .map(this::skusStringToListOfProducts)
                        .filter(this::areProductsValid)
-                       .map(this::calculatePriceOfSortedProducts)
+                       .map(this::calculatePriceOfProducts)
                        .orElse(INVALID_PRICE_VALUE);
     }
 
@@ -54,7 +54,7 @@ public class CheckoutSolution {
         return !productsList.contains(null);
     }
 
-    private int calculatePriceOfSortedProducts(List<Product> products) {
+    private int calculatePriceOfProducts(List<Product> products) {
         return HashMultiset.create(products)
                            .entrySet()
                            .stream()
@@ -72,7 +72,9 @@ public class CheckoutSolution {
             final int productsAmountRequiredForOffer = specialOffer.getProductsAmount();
             final int applyOfferTimes = productOccurrencesCount / productsAmountRequiredForOffer;
             final int applyOfferToProducts = applyOfferTimes * productsAmountRequiredForOffer;
-            return (specialOffer.getDiscountPrice() * applyOfferTimes) + ((productOccurrencesCount - applyOfferToProducts) * product.getPrice());
+            final int discountPriceTotal = specialOffer.getDiscountPrice() * applyOfferTimes;
+            final int nonDiscountedProductsAmount = productOccurrencesCount - applyOfferToProducts;
+            return discountPriceTotal + (nonDiscountedProductsAmount * product.getPrice());
         }
         else {
             return productOccurrencesCount * product.getPrice();
