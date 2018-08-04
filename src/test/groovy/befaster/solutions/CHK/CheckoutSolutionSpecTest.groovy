@@ -36,6 +36,9 @@ class CheckoutSolutionSpecTest extends Specification {
           null                    || -1
           ""                      || 0
           "${INVALID_PRODUCT_ID}" || -1
+          "A"                     || 50
+          "AAA"                   || 130
+          "AAAAA"                 || 200
 
     }
 

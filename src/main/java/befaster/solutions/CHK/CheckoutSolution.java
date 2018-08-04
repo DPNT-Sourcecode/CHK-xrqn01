@@ -1,15 +1,15 @@
 package befaster.solutions.CHK;
 
 import com.google.common.collect.HashMultiset;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multiset;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
@@ -18,18 +18,6 @@ public class CheckoutSolution {
 
     private final static int INVALID_PRICE_VALUE = -1;
     private final static int NO_PRODUCTS_VALUE = 0;
-
-    private final static Map<Character, Product> DEFAULT_PRODUCTS = listOfEntitiesWithProductIdToIdEntityMap(Arrays.asList(new Product('A', 50),
-                                                                                                                           new Product('B', 30),
-                                                                                                                           new Product('C', 20),
-                                                                                                                           new Product('D', 15),
-                                                                                                                           new Product('E', 40)),
-                                                                                                             Product::getId);
-
-    static <T> Map<Character, T> listOfEntitiesWithProductIdToIdEntityMap(List<T> entities, Function<T, Character> idGetter) {
-        return entities.stream()
-                       .collect(toMap(idGetter, identity()));
-    }
 
     /**
      * +------+-------+------------------------+
@@ -42,14 +30,29 @@ public class CheckoutSolution {
      * | E    | 40    | 2E get one B free      |
      * +------+-------+------------------------+
      */
+
+    private final static Map<Character, Product> DEFAULT_PRODUCTS =
+            listOfEntitiesWithProductIdToIdEntityMap(asList(new Product('A', 50),
+                                                            new Product('B', 30),
+                                                            new Product('C', 20),
+                                                            new Product('D', 15),
+                                                            new Product('E', 40)),
+                                                     Product::getId);
+
     private final static Map<Character, DiscountOffer> DEFAULT_DISCOUNT_OFFERS =
-            ImmutableMap.<Character, DiscountOffer>builder().put('A', new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 3, 130))
-                                                            .put('B', new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45))
-                                                            .build();
+            listOfEntitiesWithProductIdToIdEntityMap(asList(new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 3, 130),
+                                                            new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 5, 200),
+                                                            new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45)),
+                                                     DiscountOffer::getProductId);
 
     private final static Map<Character, FreebieOffer> DEFAULT_FREEBIE_OFFERS =
-            ImmutableMap.<Character, FreebieOffer>builder().put('E', new FreebieOffer(DEFAULT_PRODUCTS.get('E'), 3, DEFAULT_PRODUCTS.get('B')))
-                                                           .build();
+            listOfEntitiesWithProductIdToIdEntityMap(singletonList(new FreebieOffer(DEFAULT_PRODUCTS.get('E'), 2, DEFAULT_PRODUCTS.get('B'))),
+                                                     FreebieOffer::getProductId);
+
+    private static <T> Map<Character, T> listOfEntitiesWithProductIdToIdEntityMap(List<T> entities, Function<T, Character> idGetter) {
+        return entities.stream()
+                       .collect(toMap(idGetter, identity()));
+    }
 
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
     private final Map<Character, DiscountOffer> specialOffers = DEFAULT_DISCOUNT_OFFERS;
