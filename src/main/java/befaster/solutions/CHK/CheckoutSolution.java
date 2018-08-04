@@ -4,30 +4,31 @@ import com.google.common.collect.HashMultiset;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multiset;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
+import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 public class CheckoutSolution {
 
     private final static int INVALID_PRICE_VALUE = -1;
     private final static int NO_PRODUCTS_VALUE = 0;
 
-    private final static Map<Character, Product> DEFAULT_PRODUCTS =
-            ImmutableMap.<Character, Product>builder().put('A', new Product('A', 50))
-                                                      .put('B', new Product('B', 30))
-                                                      .put('C', new Product('C', 20))
-                                                      .put('D', new Product('D', 15))
-                                                      .put('E', new Product('E', 40))
-                                                      .build();
+    private final static Map<Character, Product> DEFAULT_PRODUCTS = listOfEntitiesWithProductIdToIdEntityMap(Arrays.asList(new Product('A', 50),
+                                                                                                                           new Product('B', 30),
+                                                                                                                           new Product('C', 20),
+                                                                                                                           new Product('D', 15),
+                                                                                                                           new Product('E', 40)),
+                                                                                                             Product::getId);
 
-    static Map<Character, Product> productsListToIdProductMap(List<Product> products) {
-        return products.stream()
-                       .collect(Collectors.toMap(Product::getId, Function.identity()));
+    static <T> Map<Character, T> listOfEntitiesWithProductIdToIdEntityMap(List<T> entities, Function<T, Character> idGetter) {
+        return entities.stream()
+                       .collect(toMap(idGetter, identity()));
     }
 
     /**
