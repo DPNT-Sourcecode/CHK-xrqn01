@@ -69,5 +69,15 @@ public class CheckoutSolution {
         final Product product = productEntry.getElement();
         final SpecialOffer specialOffer = specialOffers.get(product.getId());
 
+        int amountToApplyOffer = 0;
+
+        if (specialOffer != null) {
+            final int productsAmountRequiredForOffer = specialOffer.getProductsAmount();
+            amountToApplyOffer = productOccurrencesCount / productsAmountRequiredForOffer;
+        }
+
+        if (amountToApplyOffer != 0) {
+            
+        }
     }
 }
