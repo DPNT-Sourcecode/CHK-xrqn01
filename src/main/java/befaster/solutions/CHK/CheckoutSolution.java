@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
 public class CheckoutSolution {
@@ -40,10 +41,12 @@ public class CheckoutSolution {
         return Optional.ofNullable(skus)
                        .map(s -> s.chars()
                                   .sorted()
-                                  .mapToObj(products::get)
-                                  .map(Product::getPrice)
-                                  .reduce(Integer::sum)
-                                  .orElse(INVALID_PRICE_VALUE))
+                                  .mapToObj(c -> (char) c)
+                                  .collect(toList()))
+                       .filter(chars -> chars.stream()
+                                             .map(products::containsKey)
+                                             .reduce(Boolean::logicalAnd)
+                                             .orElse(false))
                        .orElse(INVALID_PRICE_VALUE);
     }
 }
