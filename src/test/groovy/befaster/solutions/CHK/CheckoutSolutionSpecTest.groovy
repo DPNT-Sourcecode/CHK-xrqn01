@@ -19,14 +19,15 @@ class CheckoutSolutionSpecTest extends Specification {
           actualPrice == expectedPrice
 
         where:
-          products                             | specialOffers       | productsString          || expectedPrice
-          []                                   | []                  | null                    || -1
-          [product('A', 50)]                   | []                  | "${INVALID_PRODUCT_ID}" || -1
-          [product('A', 50)]                   | []                  | "A"                     || 50
-          [product('A', 50)]                   | [offer('A', 2, 20)] | "AA"                    || 20
-          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "ABAB"                  || 120
-          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "AABB"                  || 120
-          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "BAABB"                 || 150
+          products                             | specialOffers       | productsString            || expectedPrice
+          []                                   | []                  | null                      || -1
+          [product('A', 50)]                   | []                  | "${INVALID_PRODUCT_ID}"   || -1
+          [product('A', 50)]                   | []                  | "AA${INVALID_PRODUCT_ID}" || -1
+          [product('A', 50)]                   | []                  | "A"                       || 50
+          [product('A', 50)]                   | [offer('A', 2, 20)] | "AA"                      || 20
+          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "ABAB"                    || 120
+          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "AABB"                    || 120
+          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "BAABB"                   || 150
     }
 
     static offer(String productId, int amount, int price) {

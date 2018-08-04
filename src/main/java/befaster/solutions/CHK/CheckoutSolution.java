@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import com.google.common.collect.HashMultiset;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multiset;
 
 import java.util.List;
@@ -20,12 +21,11 @@ public class CheckoutSolution {
     private final Map<Character, SpecialOffer> specialOffers;
 
     public CheckoutSolution() {
-        final Product productA = new Product('A', 50);
-        final Product productB = new Product('B', 30);
-        this.products = collectProductsListToMapById(asList(productA,
-                                                            productB,
-                                                            new Product('C', 20),
-                                                            new Product('D', 15)));
+        this.products = ImmutableMap.<Character, Product>builder().put('A', new Product('A', 50))
+                                                                  .put('B', new Product('B', 50))
+                                                                  .put('C', new Product('C', 20))
+                                                                  .put('D', new Product('D', 15))
+                                                                  .build();
         this.specialOffers = collectSpecialOffersToMapByProductId(asList(new SpecialOffer(productA, 3, 130),
                                                                          new SpecialOffer(productB, 2, 45)));
     }
@@ -59,12 +59,12 @@ public class CheckoutSolution {
         return HashMultiset.create(products)
                            .entrySet()
                            .stream()
-                           .map(this::toProductValue)
+                           .map(this::calculateProductsValue)
                            .reduce(Integer::sum)
                            .orElse(INVALID_PRICE_VALUE);
     }
 
-    private int toProductValue(Multiset.Entry<Product> productEntry) {
+    private int calculateProductsValue(Multiset.Entry<Product> productEntry) {
         final int productOccurrencesCount = productEntry.getCount();
         final Product product = productEntry.getElement();
         final SpecialOffer specialOffer = specialOffers.get(product.getId());
@@ -72,7 +72,7 @@ public class CheckoutSolution {
         if (specialOffer != null) {
             final int productsAmountRequiredForOffer = specialOffer.getProductsAmount();
             final int applyOfferTimes = productOccurrencesCount / productsAmountRequiredForOffer;
-            final int applyOfferToProducts = applyOfferTimes *  productsAmountRequiredForOffer;
+            final int applyOfferToProducts = applyOfferTimes * productsAmountRequiredForOffer;
             return (specialOffer.getDiscountPrice() * applyOfferTimes) + ((productOccurrencesCount - applyOfferToProducts) * product.getPrice());
         }
         else {
