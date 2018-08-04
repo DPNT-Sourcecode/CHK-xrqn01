@@ -13,6 +13,8 @@ import static java.util.stream.Collectors.toList;
 public class CheckoutSolution {
 
     private final static int INVALID_PRICE_VALUE = -1;
+    private final static int NO_PRODUCTS_VALUE = 0;
+
     private final static Map<Character, Product> defaultProducts =
             ImmutableMap.<Character, Product>builder().put('A', new Product('A', 50))
                                                       .put('B', new Product('B', 30))
@@ -60,7 +62,7 @@ public class CheckoutSolution {
                            .stream()
                            .map(this::calculateProductsValue)
                            .reduce(Integer::sum)
-                           .orElse(INVALID_PRICE_VALUE);
+                           .orElse(NO_PRODUCTS_VALUE);
     }
 
     private int calculateProductsValue(Multiset.Entry<Product> productEntry) {

@@ -35,6 +35,7 @@ class CheckoutSolutionSpecTest extends Specification {
           [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "ABAB"                    || 120
           [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "AABB"                    || 120
           [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "BAABB"                   || 150
+          exerciseProducts                     | exerciseOffers      | ""                        || 0
           exerciseProducts                     | exerciseOffers      | "B"                       || 30
           exerciseProducts                     | exerciseOffers      | "ABCD"                    || 115
     }

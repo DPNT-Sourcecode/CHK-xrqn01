@@ -2777,3 +2777,71 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m35s, 20303 frames, 17.50 MB | 37 source captures, 235 ms/capture
 [1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m37s, 20310 frames, 17.50 MB | 37 source captures, 235 ms/capture
 [1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m39s, 20319 frames, 17.50 MB | 37 source captures, 235 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m41s, 20326 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m43s, 20335 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m45s, 20343 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m47s, 20351 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m49s, 20359 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m51s, 20367 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m53s, 20375 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m55s, 20383 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m57s, 20391 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h24m59s, 20399 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m01s, 20407 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m03s, 20415 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m05s, 20423 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Upload]    [0;39m - Sync local files with remote
+[1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/sourcecode_20180804T140836.srcs
+[1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/sourcecode_20180804T140836.srcs
+[1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/record-and-upload-20180804T140835.log
+[1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/record-and-upload-20180804T140835.log
+[1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/screencast_20180804T140836.mp4
+[1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/screencast_20180804T140836.mp4
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m07s, 20431 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m09s, 20439 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m11s, 20447 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m13s, 20455 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m15s, 20463 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m17s, 20471 frames, 17.50 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m19s, 20479 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m21s, 20487 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m23s, 20495 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m25s, 20503 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m27s, 20511 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m29s, 20519 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m31s, 20527 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m33s, 20535 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m35s, 20543 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m37s, 20551 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m39s, 20559 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m41s, 20567 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m43s, 20575 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m45s, 20583 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m47s, 20591 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m49s, 20599 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m51s, 20607 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m53s, 20615 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m55s, 20623 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m57s, 20631 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h25m59s, 20639 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m01s, 20647 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m03s, 20655 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m05s, 20663 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m07s, 20671 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m09s, 20679 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m11s, 20687 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m13s, 20695 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m15s, 20703 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m17s, 20711 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m19s, 20719 frames, 17.73 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m21s, 20727 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m23s, 20735 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m25s, 20743 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m27s, 20751 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m29s, 20759 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m31s, 20767 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m33s, 20775 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m35s, 20783 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m37s, 20791 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 1h26m39s, 20799 frames, 17.96 MB | 38 source captures, 400 ms/capture
+[1;30mINFO  [ExEvent-113][0;39m - Tag state with: CHK_R1/deploy
