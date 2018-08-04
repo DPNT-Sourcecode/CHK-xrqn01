@@ -31,7 +31,7 @@ public class EntryPointMapping {
     }
 
     public Object sum(String ... p) {
-        return sumSolution.compute(asInt(p[0]), asInt(p[1]));
+        return sumSolution.sum(asInt(p[0]), asInt(p[1]));
     }
 
     public Object hello(String ... p) {
