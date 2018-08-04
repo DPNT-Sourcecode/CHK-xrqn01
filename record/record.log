@@ -437,3 +437,5 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/screencast_20180804T140836.mp4
 [1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/screencast_20180804T140836.mp4
 [1;30mINFO  [ExEvent-35][0;39m - Tag state with: HLO_R1/deploy
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h10m02s, 2409 frames, 1.61 MB |  8 source captures, 243 ms/capture
+[1;30mINFO  [ExEvent-32][0;39m - Tag state with: HLO_R1/done
