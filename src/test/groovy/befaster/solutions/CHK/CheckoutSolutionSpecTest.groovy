@@ -14,14 +14,21 @@ class CheckoutSolutionSpecTest extends Specification {
 
     @Unroll
     "should return #expectedPrice for products=#products and special offers=#specialOffers and given #productsString"() {
+        when:
+          def actualPrice = solution.checkout productsString
 
+        then:
+          actualPrice == expectedPrice
 
         where:
-          products           | specialOffers | productsString          || expectedPrice
-          []                 | []            | null                    || -1
-          [product('A', 50)] | []            | "${INVALID_PRODUCT_ID}" || -1
-          [product('A', 50)] | []            | "A"                     || 50
-          [product('A', 50)] | []            | "A"                     || 50
+          products                             | specialOffers       | productsString          || expectedPrice
+          []                                   | []                  | null                    || -1
+          [product('A', 50)]                   | []                  | "${INVALID_PRODUCT_ID}" || -1
+          [product('A', 50)]                   | []                  | "A"                     || 50
+          [product('A', 50)]                   | [offer('A', 2, 20)] | "AA"                    || 20
+          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "ABAB"                  || 120
+          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "AABB"                  || 120
+          [product('A', 50), product('B', 30)] | [offer('B', 2, 20)] | "BAABB"                 || 150
 
     }
 

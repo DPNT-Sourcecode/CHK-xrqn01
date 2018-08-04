@@ -1,9 +1,8 @@
 package befaster.solutions.CHK;
 
-import befaster.runner.SolutionNotImplementedException;
-
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class CheckoutSolution {
 
@@ -27,6 +26,7 @@ public class CheckoutSolution {
     }
 
     public Integer checkout(String skus) {
-        throw new SolutionNotImplementedException();
+        return Optional.ofNullable(skus)
+                       .orElse(-1);
     }
 }
