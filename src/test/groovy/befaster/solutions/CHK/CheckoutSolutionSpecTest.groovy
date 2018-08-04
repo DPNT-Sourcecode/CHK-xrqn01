@@ -8,11 +8,12 @@ class CheckoutSolutionSpecTest extends Specification {
 
     static INVALID_PRODUCT_ID = 'X'
 
+
     @Subject
     def solution = new CheckoutSolution()
 
     @Unroll
-    "should return #expectedPrice for given #productsString"() {
+    "should return #expectedPrice for products=#products and special offers=#specialOffers and given #productsString"() {
 
 
         where:

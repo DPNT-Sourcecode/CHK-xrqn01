@@ -11,8 +11,14 @@ public class CheckoutSolution {
     private final List<SpecialOffer> specialOffers;
 
     public CheckoutSolution() {
-        this(Arrays.asList(new Product('A', 50)),
-             Arrays.asList(new SpecialOffer()));
+        final Product productA = new Product('A', 50);
+        final Product productB = new Product('B', 30);
+        this.products = Arrays.asList(productA,
+                                      productB,
+                                      new Product('C', 20),
+                                      new Product('D', 15));
+        this.specialOffers = Arrays.asList(new SpecialOffer(productA, 3, 130),
+                                           new SpecialOffer(productB, 2, 45));
     }
 
     public CheckoutSolution(List<Product> products, List<SpecialOffer> specialOffers) {
