@@ -7,6 +7,8 @@ import com.google.common.collect.Multiset;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -23,8 +25,9 @@ public class CheckoutSolution {
                                                       .put('E', new Product('E', 40))
                                                       .build();
 
-    static Map<Character, Product> productsListToIdProductMap() {
-        
+    static Map<Character, Product> productsListToIdProductMap(List<Product> products) {
+        return products.stream()
+                       .collect(Collectors.toMap(Product::getId, Function.identity()));
     }
 
     /**
