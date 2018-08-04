@@ -34,11 +34,20 @@ class CheckoutSolutionSpecTest extends Specification {
         where:
           productsString          || expectedPrice
           null                    || -1
-          ""                      || 0
           "${INVALID_PRODUCT_ID}" || -1
+          ""                      || 0
           "A"                     || 50
           "AAA"                   || 130
+          "AAABB"                 || 130 + 45
+          "BBAAA"                 || 130 + 45
+          "BAAAB"                 || 130 + 45
           "AAAAA"                 || 200
+          "AAAAAA"                || 250
+          "B"                     || 30
+          "BB"                    || 45
+          "EEB"                   || (2 * 40)
+          "EEBB"                  || (2 * 40) + 30
+          "AAAEEBB"               || 130 + (2 * 40) + 30
 
     }
 
