@@ -23,4 +23,9 @@ final class SpecialOffer {
     int getDiscountPrice() {
         return discountPrice;
     }
+
+    @Override
+    public String toString() {
+        return "Offer(" + productsAmount + getProductId() + " for " + discountPrice + ')';
+    }
 }

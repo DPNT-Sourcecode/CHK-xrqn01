@@ -17,10 +17,14 @@ class CheckoutSolutionSpecTest extends Specification {
 
 
         where:
-          productsString          || expectedPrice
-          null                    || -1
-          "${INVALID_PRODUCT_ID}" || -1
+          products | specialOffers | productsString          || expectedPrice
+          []       | []            | null                    || -1
+          []       | []            | "${INVALID_PRODUCT_ID}" || -1
 
+    }
+
+    static product(char id, int price) {
+        new Product(id, price)
     }
 
 }
