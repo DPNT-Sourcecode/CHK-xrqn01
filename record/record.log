@@ -322,3 +322,4 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m30s, 1560 frames, 0.93 MB |  3 source captures, 326 ms/capture
 [1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m32s, 1568 frames, 0.93 MB |  3 source captures, 326 ms/capture
 [1;30mINFO  [ExEvent-20][0;39m - Tag state with: SUM_R1/deploy
+[1;30mINFO  [ExEvent-35][0;39m - Tag state with: SUM_R1/done
