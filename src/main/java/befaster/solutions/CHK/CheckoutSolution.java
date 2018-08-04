@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -27,11 +28,9 @@ public class CheckoutSolution {
                                                             new Product('E', 40)),
                                                      Product::getId);
 
-    private final static Map<Character, DiscountOffer> DEFAULT_DISCOUNT_OFFERS =
-            listOfEntitiesWithProductIdToIdEntityMap(asList(new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 3, 130),
-                                                            new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 5, 200),
-                                                            new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45)),
-                                                     DiscountOffer::getProductId);
+    private final static List<DiscountOffer> DEFAULT_DISCOUNT_OFFERS = asList(new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 3, 130),
+                                                                              new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 5, 200),
+                                                                              new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45));
 
     private final static Map<Character, FreebieOffer> DEFAULT_FREEBIE_OFFERS =
             listOfEntitiesWithProductIdToIdEntityMap(singletonList(new FreebieOffer(DEFAULT_PRODUCTS.get('E'), 2, DEFAULT_PRODUCTS.get('B'))),
@@ -43,7 +42,7 @@ public class CheckoutSolution {
     }
 
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
-    private final Map<Character, DiscountOffer> specialOffers = DEFAULT_DISCOUNT_OFFERS;
+    private final List<DiscountOffer>  specialOffers = DEFAULT_DISCOUNT_OFFERS;
     private final Map<Character, FreebieOffer> freebieOffers = DEFAULT_FREEBIE_OFFERS;
 
     public Integer checkout(String skus) {
@@ -65,10 +64,9 @@ public class CheckoutSolution {
     }
 
     private int calculatePriceOfProducts(List<Product> products) {
-        int bProductsAmount = countProductsWithId(products, 'B');
-        int eProductsAmount = countProductsWithId(products, 'E');
-
-        int amountOfEDiscounts = eProductsAmount / 2;
+        int amountOfEDiscounts = countProductsWithId(products, 'E') / 2;
+        IntStream.range(0, amountOfEDiscounts)
+                 .forEach(i -> products.remove(DEFAULT_PRODUCTS.get('B')));
 
         return HashMultiset.create(products)
                            .entrySet()
