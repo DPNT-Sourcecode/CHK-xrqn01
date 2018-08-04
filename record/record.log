@@ -403,3 +403,37 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m06s, 2185 frames, 1.43 MB |  6 source captures, 240 ms/capture
 [1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m08s, 2193 frames, 1.43 MB |  6 source captures, 240 ms/capture
 [1;30mINFO  [ExEvent-35][0;39m - Tag state with: HLO_R1/deploy
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m10s, 2201 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m12s, 2209 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m14s, 2217 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m16s, 2225 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m18s, 2233 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m20s, 2241 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m22s, 2249 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m24s, 2257 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m26s, 2265 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m28s, 2273 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m30s, 2281 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m32s, 2289 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m34s, 2297 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m36s, 2305 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m38s, 2313 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m40s, 2321 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m42s, 2329 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m44s, 2337 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m46s, 2345 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m48s, 2353 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m50s, 2361 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m52s, 2369 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m54s, 2377 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m56s, 2385 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h09m58s, 2393 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Upload]    [0;39m - Sync local files with remote
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h10m00s, 2401 frames, 1.43 MB |  7 source captures, 221 ms/capture
+[1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/sourcecode_20180804T140836.srcs
+[1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/sourcecode_20180804T140836.srcs
+[1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/record-and-upload-20180804T140835.log
+[1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/record-and-upload-20180804T140835.log
+[1;30mINFO  [Upload]    [0;39m - Uploading file record/localstore/screencast_20180804T140836.mp4
+[1;30mINFO  [Upload]    [0;39m - Finished uploading file record/localstore/screencast_20180804T140836.mp4
+[1;30mINFO  [ExEvent-35][0;39m - Tag state with: HLO_R1/deploy
