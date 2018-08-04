@@ -17,7 +17,7 @@ public class CheckoutSolution {
     private final static int INVALID_PRICE_VALUE = -1;
 
     private final Map<Character, Product> products;
-    private final List<SpecialOffer> specialOffers;
+    private final Map<Product, SpecialOffer> specialOffers;
 
     public CheckoutSolution() {
         final Product productA = new Product('A', 50);
@@ -26,8 +26,8 @@ public class CheckoutSolution {
                                                                    productB,
                                                                    new Product('C', 20),
                                                                    new Product('D', 15)));
-        this.specialOffers = Arrays.asList(new SpecialOffer(productA, 3, 130),
-                                           new SpecialOffer(productB, 2, 45));
+        this.specialOffers = Arrays.asList(productA, new SpecialOffer(productA, 3, 130),
+                                           productB, new SpecialOffer(productB, 2, 45));
     }
 
     public CheckoutSolution(List<Product> products, List<SpecialOffer> specialOffers) {
@@ -43,28 +43,23 @@ public class CheckoutSolution {
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)
                        .map(s -> s.chars()
-                                  .sorted()
-                                  .mapToObj(c -> (char) c)
+                                  .mapToObj(id -> products.get((char) id))
                                   .collect(toList()))
-                       .filter(chars -> chars.stream()
-                                             .map(products::containsKey)
-                                             .reduce(Boolean::logicalAnd)
-                                             .orElse(false))
-                       .map(chars -> chars.stream()
-                                          .map(products::get)
-                                          .collect(toList()))
+                       .filter(productsList -> !productsList.contains(null))
                        .map(this::calculatePriceOfSortedProducts)
                        .orElse(INVALID_PRICE_VALUE);
     }
 
     private int calculatePriceOfSortedProducts(List<Product> products) {
-        Multiset<Product> productsMultiSet = HashMultiset.create(products);
-        productsMultiSet.entrySet()
-                        .stream()
-                        .map(this::toProductValue)
+        return HashMultiset.create(products)
+                           .entrySet()
+                           .stream()
+                           .map(this::toProductValue)
+                           .reduce(Integer::sum)
+                           .orElse(INVALID_PRICE_VALUE);
     }
 
     private int toProductValue(Multiset.Entry<Product> productEntry) {
-        return 0;
+
     }
 }
