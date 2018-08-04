@@ -15,28 +15,19 @@ public class CheckoutSolution {
     private final static int INVALID_PRICE_VALUE = -1;
     private final static int NO_PRODUCTS_VALUE = 0;
 
-    private final static Map<Character, Product> defaultProducts =
+    private final static Map<Character, Product> DEFAULT_PRODUCTS =
             ImmutableMap.<Character, Product>builder().put('A', new Product('A', 50))
                                                       .put('B', new Product('B', 30))
                                                       .put('C', new Product('C', 20))
                                                       .put('D', new Product('D', 15))
                                                       .build();
-    private final static Map<Character, SpecialOffer> defaultSpecialOffers =
-            ImmutableMap.<Character, SpecialOffer>builder().put('A', new SpecialOffer(defaultProducts.get('A'), 3, 130))
-                                                           .put('B', new SpecialOffer(defaultProducts.get('B'), 2, 45))
+    private final static Map<Character, SpecialOffer> DEFAULT_SPECIAL_OFFERS =
+            ImmutableMap.<Character, SpecialOffer>builder().put('A', new SpecialOffer(DEFAULT_PRODUCTS.get('A'), 3, 130))
+                                                           .put('B', new SpecialOffer(DEFAULT_PRODUCTS.get('B'), 2, 45))
                                                            .build();
 
-    private final Map<Character, Product> products;
-    private final Map<Character, SpecialOffer> specialOffers;
-
-    public CheckoutSolution() {
-        this(defaultProducts, defaultSpecialOffers);
-    }
-
-    public CheckoutSolution(Map<Character, Product> products, Map<Character, SpecialOffer> specialOffers) {
-        this.products = products;
-        this.specialOffers = specialOffers;
-    }
+    private final Map<Character, Product> products = DEFAULT_PRODUCTS;
+    private final Map<Character, SpecialOffer> specialOffers = DEFAULT_SPECIAL_OFFERS;
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)

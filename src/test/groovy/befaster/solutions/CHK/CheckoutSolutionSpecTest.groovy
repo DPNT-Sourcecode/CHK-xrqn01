@@ -8,8 +8,6 @@ import static java.util.stream.Collectors.toMap
 class CheckoutSolutionSpecTest extends Specification {
 
     static INVALID_PRODUCT_ID = 'X'
-    static exerciseProducts = [product('A', 50), product('B', 30), product('C', 20), product('D', 15)]
-    static exerciseOffers = [offer('A', 3, 130), offer('B', 2, 45)]
 
     @Unroll
     "should return #expectedPrice for products=#products and special offers=#specialOffers and given #productsString"() {
