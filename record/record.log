@@ -323,3 +323,29 @@ It's highly recommended that you fix the library with 'execstack -c <libfile>', 
 [1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m32s, 1568 frames, 0.93 MB |  3 source captures, 326 ms/capture
 [1;30mINFO  [ExEvent-20][0;39m - Tag state with: SUM_R1/deploy
 [1;30mINFO  [ExEvent-35][0;39m - Tag state with: SUM_R1/done
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m34s, 1576 frames, 0.93 MB |  4 source captures, 230 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m36s, 1584 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m38s, 1592 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m40s, 1600 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m42s, 1608 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m44s, 1616 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m46s, 1624 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m48s, 1632 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m50s, 1640 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m52s, 1648 frames, 0.93 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m54s, 1656 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m56s, 1664 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h06m58s, 1672 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m00s, 1680 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m02s, 1688 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m04s, 1696 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m06s, 1704 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m08s, 1712 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m10s, 1720 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m12s, 1728 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m14s, 1736 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m16s, 1744 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m18s, 1752 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m20s, 1760 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [Metrics]   [0;39m - Recorded 0h07m22s, 1768 frames, 1.09 MB |  5 source captures, 212 ms/capture
+[1;30mINFO  [ExEvent-35][0;39m - Tag state with: HLO_R1/new
