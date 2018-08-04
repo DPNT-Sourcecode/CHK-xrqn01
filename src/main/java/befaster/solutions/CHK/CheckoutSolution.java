@@ -19,18 +19,6 @@ public class CheckoutSolution {
     private final static int INVALID_PRICE_VALUE = -1;
     private final static int NO_PRODUCTS_VALUE = 0;
 
-    /**
-     * +------+-------+------------------------+
-     * | Item | Price | Special offers         |
-     * +------+-------+------------------------+
-     * | A    | 50    | 3A for 130, 5A for 200 |
-     * | B    | 30    | 2B for 45              |
-     * | C    | 20    |                        |
-     * | D    | 15    |                        |
-     * | E    | 40    | 2E get one B free      |
-     * +------+-------+------------------------+
-     */
-
     private final static Map<Character, Product> DEFAULT_PRODUCTS =
             listOfEntitiesWithProductIdToIdEntityMap(asList(new Product('A', 50),
                                                             new Product('B', 30),
@@ -77,6 +65,12 @@ public class CheckoutSolution {
     }
 
     private int calculatePriceOfProducts(List<Product> products) {
+        int eProductsAmount = (int) products.stream()
+                                            .filter(p -> p.getId() == 'E')
+                                            .count();
+
+        int amountOfEDiscounts = eProductsAmount / 2;
+
         return HashMultiset.create(products)
                            .entrySet()
                            .stream()

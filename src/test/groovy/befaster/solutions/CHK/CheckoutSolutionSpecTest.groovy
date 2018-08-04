@@ -11,18 +11,6 @@ class CheckoutSolutionSpecTest extends Specification {
     @Subject
     def solution = new CheckoutSolution()
 
-    /**
-     * +------+-------+------------------------+
-     * | Item | Price | Special offers         |
-     * +------+-------+------------------------+
-     * | A    | 50    | 3A for 130, 5A for 200 |
-     * | B    | 30    | 2B for 45              |
-     * | C    | 20    |                        |
-     * | D    | 15    |                        |
-     * | E    | 40    | 2E get one B free      |
-     * +------+-------+------------------------+
-     */
-
     @Unroll
     "should return #expectedPrice for given products #productsString"() {
         when:
@@ -48,7 +36,6 @@ class CheckoutSolutionSpecTest extends Specification {
           "EEB"                   || (2 * 40)
           "EEBB"                  || (2 * 40) + 30
           "AAAEEBB"               || 130 + (2 * 40) + 30
-
     }
 
 }
