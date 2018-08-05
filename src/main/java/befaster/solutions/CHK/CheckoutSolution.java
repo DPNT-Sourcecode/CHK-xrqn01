@@ -44,7 +44,8 @@ public class CheckoutSolution {
                                                                                                                                         .productId('B')
                                                                                                                                         .productsAmount(2)
                                                                                                                                         .discountPrice(45)
-                                                                                                                                        .build()
+                                                                                                                                        .build(),
+                                                                                        new NonDiscountStrategy()
                                                                                        );
 
     private static <T> Map<Character, T> listOfEntitiesWithProductIdToIdEntityMap(List<T> entities, Function<T, Character> idGetter) {
