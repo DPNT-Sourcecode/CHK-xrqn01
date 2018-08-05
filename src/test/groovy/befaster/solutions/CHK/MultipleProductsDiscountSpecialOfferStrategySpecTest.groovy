@@ -35,12 +35,12 @@ class MultipleProductsDiscountSpecialOfferStrategySpecTest extends Specification
           result.getPriceOfDiscountedProducts() == expectedPrice
 
         where:
-          givenProducts                                         || expectedRemainingProducts  | expectedPrice
-          null                                                  || []                         | -1
-          []                                                    || []                         | 0
-          [PRODUCT, INVALID_PRODUCT]                            || [PRODUCT, INVALID_PRODUCT] | 0
-          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                  || []                         | PRODUCTS_PRICE_WITH_DISCOUNT
-          [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT || []                         | PRODUCTS_PRICE_WITH_DISCOUNT
+          givenProducts                                         || expectedRemainingProducts                    | expectedPrice
+          null                                                  || []                                           | 0
+          []                                                    || []                                           | 0
+          [PRODUCT, INVALID_PRODUCT]                            || [PRODUCT, INVALID_PRODUCT]                   | 0
+          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                  || []                                           | PRODUCTS_PRICE_WITH_DISCOUNT
+          [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT || [INVALID_PRODUCT] * REQUIRED_PRODUCTS_AMOUNT | PRODUCTS_PRICE_WITH_DISCOUNT
     }
 
 }

@@ -5,6 +5,9 @@ import com.google.common.collect.Multiset;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
+import static befaster.solutions.CHK.SpecialOfferStrategy.OfferApplicationResult.nothingDiscounted;
 import static lombok.AccessLevel.PACKAGE;
 
 @Builder
@@ -17,12 +20,15 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
 
     @Override
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        products.entrySet()
-                .stream()
-                .filter(productEntry -> productEntry.getElement()
-                                                    .getId() == productId)
-                .findAny()
-                .map(productEntry -> applySpecialOfferTo(products, productEntry));
+        return Optional.ofNullable(products)
+                       .orElse(HashMultiset.create())
+                       .entrySet()
+                       .stream()
+                       .filter(productEntry -> productEntry.getElement()
+                                                           .getId() == productId)
+                       .findAny()
+                       .map(productEntry -> applySpecialOfferTo(products, productEntry))
+                       .orElse(nothingDiscounted(products));
     }
 
     private OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products, Multiset.Entry<Product> productEntry) {

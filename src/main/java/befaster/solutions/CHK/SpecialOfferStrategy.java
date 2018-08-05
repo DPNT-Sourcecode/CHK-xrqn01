@@ -10,10 +10,14 @@ interface SpecialOfferStrategy {
 
     @Getter
     @RequiredArgsConstructor
-    static class OfferApplicationResult {
+    class OfferApplicationResult {
 
         private final HashMultiset<Product> remainingProducts;
         private final int priceOfDiscountedProducts;
+
+        static OfferApplicationResult nothingDiscounted(HashMultiset<Product> remainingProducts) {
+            return new OfferApplicationResult(remainingProducts, 0);
+        }
 
     }
 
