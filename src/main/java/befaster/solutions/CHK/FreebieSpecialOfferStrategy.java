@@ -1,11 +1,13 @@
 package befaster.solutions.CHK;
 
 import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
+import static befaster.solutions.CHK.SpecialOfferStrategy.OfferApplicationResult.nothingDiscounted;
 import static lombok.AccessLevel.PRIVATE;
 
 @Builder
@@ -20,26 +22,35 @@ final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
         final HashMultiset<Product> productsOrEmptyIfNull = Optional.ofNullable(products)
                                                                     .orElse(HashMultiset.create());
+        return productsOrEmptyIfNull.entrySet()
+                                    .stream()
+                                    .filter(productEntry -> productEntry.getElement()
+                                                                        .getId() == productId)
+                                    .findAny()
+                                    .map(productEntry -> {
+                                        return applySpecialOfferTo(productsOrEmptyIfNull, productEntry);
+                                    })
+                                    .orElse(nothingDiscounted(productsOrEmptyIfNull));
+    }
+
+    private OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> productsOrEmptyIfNull, Multiset.Entry<Product> productEntry) {
+        final int productsAmount = productEntry.getCount();
+        final int applicableDiscountsAmount = productsAmount / requiredProductsAmount;
+
+        final HashMultiset<Product> remainingProducts = HashMultiset.create(productsOrEmptyIfNull);
+
         productsOrEmptyIfNull.entrySet()
                              .stream()
-                             .filter(productEntry -> productEntry.getElement()
-                                                                 .getId() == productId)
+                             .filter(entry -> entry.getElement()
+                                                   .getId() == freeProductId)
                              .findAny()
-                             .map(productEntry -> {
-                                 final int productsAmount = productEntry.getCount();
-                                 final int applicableDiscountsAmount = productsAmount / requiredProductsAmount;
-
-                                 final HashMultiset<Product> remainingProducts = HashMultiset.create(productsOrEmptyIfNull);
-
-                                 productsOrEmptyIfNull.entrySet()
-                                                      .stream()
-                                                      .filter(entry -> entry.getElement()
-                                                                            .getId() == freeProductId)
-                                                      .findAny()
-                                                      .ifPresent(productToRemoveEntry -> {
-                                                          productToRemoveEntry.getCount()
-                                                      });
-                             })
+                             .ifPresent(productToRemoveEntry -> {
+                                 final int newCount = productToRemoveEntry.getCount() >= applicableDiscountsAmount
+                                                      ? productToRemoveEntry.getCount() - applicableDiscountsAmount
+                                                      : 0;
+                                 remainingProducts.setCount(productToRemoveEntry.getElement(), newCount);
+                             });
+        return new OfferApplicationResult(remainingProducts, 0);
     }
 
 }
