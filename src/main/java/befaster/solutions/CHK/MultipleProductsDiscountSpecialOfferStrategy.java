@@ -20,15 +20,15 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
 
     @Override
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        products = Optional.ofNullable(products)
-                           .orElse(HashMultiset.create());
-        return products.entrySet()
-                       .stream()
-                       .filter(productEntry -> productEntry.getElement()
-                                                           .getId() == productId)
-                       .findAny()
-                       .map(productEntry -> applySpecialOfferTo(products, productEntry))
-                       .orElse(nothingDiscounted(products));
+        final HashMultiset<Product> productsOrEmptyIfNull = Optional.ofNullable(products)
+                                                                    .orElse(HashMultiset.create());
+        return productsOrEmptyIfNull.entrySet()
+                                    .stream()
+                                    .filter(productEntry -> productEntry.getElement()
+                                                                        .getId() == productId)
+                                    .findAny()
+                                    .map(productEntry -> applySpecialOfferTo(productsOrEmptyIfNull, productEntry))
+                                    .orElse(nothingDiscounted(productsOrEmptyIfNull));
     }
 
     private OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products, Multiset.Entry<Product> productEntry) {
