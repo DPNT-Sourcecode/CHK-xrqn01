@@ -18,8 +18,8 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
         products.entrySet()
                 .stream()
-                .filter(e -> e.getElement()
-                              .getId() == productId)
+                .filter(e -> productId == e.getElement()
+                                           .getId())
                 .findAny()
                 .map(productEntry -> {
                     final int applicableProductsAmount = productEntry.getCount();
@@ -27,6 +27,10 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
                     final int applyOfferToProducts = applyOfferTimes * productsAmount;
                     final int discountPriceTotal = discountPrice * applyOfferTimes;
                     final int nonDiscountedProductsAmount = applicableProductsAmount - applyOfferToProducts;
+
+                    final HashMultiset<Product> remainingProducts = HashMultiset.create(products);
+                    remainingProducts.setCount(productEntry.getElement(), nonDiscountedProductsAmount);
+                    return new OfferApplicationResult(products, discountPriceTotal);
                 });
     }
 
