@@ -24,7 +24,7 @@ class MultipleProductsDiscountSpecialOfferStrategySpecTest extends Specification
     @Unroll
     "should return remaining products=#expectedRemainingProducts and price=#expectedPrice for given #givenProducts"() {
         given:
-          def givenProductsMultiSet = HashMultiset.create givenProducts
+          def givenProductsMultiSet = givenProducts != null ? HashMultiset.create(givenProducts) : null
           def expectedProductsMultiSet = HashMultiset.create expectedRemainingProducts
 
         when:

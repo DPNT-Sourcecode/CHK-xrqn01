@@ -20,9 +20,9 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
 
     @Override
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        return Optional.ofNullable(products)
-                       .orElse(HashMultiset.create())
-                       .entrySet()
+        products = Optional.ofNullable(products)
+                           .orElse(HashMultiset.create());
+        return products.entrySet()
                        .stream()
                        .filter(productEntry -> productEntry.getElement()
                                                            .getId() == productId)
