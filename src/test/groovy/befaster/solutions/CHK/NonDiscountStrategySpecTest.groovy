@@ -30,7 +30,7 @@ class NonDiscountStrategySpecTest extends Specification {
           _ | randomProducts(5)
           _ | randomProducts(10)
 
-          expectedPrice = givenProducts?.inject(0, { a, b -> a.price + b.price }) ?: 0
+          expectedPrice = givenProducts?.inject(0, { sum, b -> sum + b.price }) ?: 0
     }
 
     static randomProducts(int amount) {
@@ -41,9 +41,7 @@ class NonDiscountStrategySpecTest extends Specification {
         return new Product(randomProductId(), randomPrice())
     }
 
-    static randomProductId() {
-        (new Random().nextInt(25) + 65) as char
-    }
+    static randomProductId = { 'A' }.memoize()
 
     static randomPrice() {
         new Random().nextInt(100)
