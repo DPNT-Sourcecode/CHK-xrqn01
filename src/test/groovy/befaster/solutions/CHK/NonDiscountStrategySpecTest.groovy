@@ -38,10 +38,16 @@ class NonDiscountStrategySpecTest extends Specification {
     }
 
     static randomProduct() {
-        return new Product(randomProductId(), randomPrice())
+        return new Product(nextProductId(), randomPrice())
     }
 
-    static randomProductId = { 'A' }.memoize()
+    static CURRENT_PRODUCT_ID = 'A' as char
+
+    static nextProductId() {
+        char result = CURRENT_PRODUCT_ID
+        CURRENT_PRODUCT_ID += 1
+        result
+    }
 
     static randomPrice() {
         new Random().nextInt(100)
