@@ -24,15 +24,21 @@ final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
                              .stream()
                              .filter(productEntry -> productEntry.getElement()
                                                                  .getId() == productId)
+                             .findAny()
                              .map(productEntry -> {
                                  final int productsAmount = productEntry.getCount();
                                  final int applicableDiscountsAmount = productsAmount / requiredProductsAmount;
 
                                  final HashMultiset<Product> remainingProducts = HashMultiset.create(productsOrEmptyIfNull);
+
                                  productsOrEmptyIfNull.entrySet()
                                                       .stream()
                                                       .filter(entry -> entry.getElement()
                                                                             .getId() == freeProductId)
+                                                      .findAny()
+                                                      .ifPresent(productToRemoveEntry -> {
+                                                          productToRemoveEntry.getCount()
+                                                      });
                              })
     }
 
