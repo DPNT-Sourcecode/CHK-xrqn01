@@ -5,7 +5,7 @@ import spock.lang.Specification
 import spock.lang.Subject
 import spock.lang.Unroll
 
-class MultipleProductsDiscountSpecialOfferStrategySpecTest extends Specification {
+class MultipleProductsDiscountPriceCalculationStrategySpecTest extends Specification {
 
     static PRODUCT_ID = 'T' as char
     static INVALID_PRODUCT_ID = 'X' as char
@@ -16,10 +16,10 @@ class MultipleProductsDiscountSpecialOfferStrategySpecTest extends Specification
     static INVALID_PRODUCT = new Product(INVALID_PRODUCT_ID, 1000)
 
     @Subject
-    def strategy = MultipleProductsDiscountSpecialOfferStrategy.builder().productId(PRODUCT.getId())
-                                                               .productsAmount(REQUIRED_PRODUCTS_AMOUNT)
-                                                               .discountPrice(PRODUCTS_PRICE_WITH_DISCOUNT)
-                                                               .build()
+    def strategy = MultipleProductsDiscountPriceCalculationStrategy.builder().productId(PRODUCT.getId())
+                                                                   .productsAmount(REQUIRED_PRODUCTS_AMOUNT)
+                                                                   .discountPrice(PRODUCTS_PRICE_WITH_DISCOUNT)
+                                                                   .build()
 
     @Unroll
     "should return remaining products=#expectedRemainingProducts and price=#expectedPrice for given #givenProducts"() {

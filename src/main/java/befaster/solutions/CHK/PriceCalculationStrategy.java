@@ -4,19 +4,19 @@ import com.google.common.collect.HashMultiset;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-interface SpecialOfferStrategy {
+interface PriceCalculationStrategy {
 
-    OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products);
+    PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products);
 
     @Getter
     @RequiredArgsConstructor
-    class OfferApplicationResult {
+    class PriceCalculationResult {
 
         private final HashMultiset<Product> remainingProducts;
         private final int priceOfDiscountedProducts;
 
-        static OfferApplicationResult nothingDiscounted(HashMultiset<Product> remainingProducts) {
-            return new OfferApplicationResult(remainingProducts, 0);
+        static PriceCalculationResult nothingDiscounted(HashMultiset<Product> remainingProducts) {
+            return new PriceCalculationResult(remainingProducts, 0);
         }
 
     }

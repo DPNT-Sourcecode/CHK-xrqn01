@@ -7,19 +7,19 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
-import static befaster.solutions.CHK.SpecialOfferStrategy.OfferApplicationResult.nothingDiscounted;
+import static befaster.solutions.CHK.PriceCalculationStrategy.PriceCalculationResult.nothingDiscounted;
 import static lombok.AccessLevel.PRIVATE;
 
 @Builder
 @RequiredArgsConstructor(access = PRIVATE)
-final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
+final class FreebiePriceCalculationStrategy implements PriceCalculationStrategy {
 
     private final char productId;
     private final int requiredProductsAmount;
     private final char freeProductId;
 
     @Override
-    public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
+    public PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products) {
         final HashMultiset<Product> productsOrEmptyIfNull = Optional.ofNullable(products)
                                                                     .orElse(HashMultiset.create());
         return productsOrEmptyIfNull.entrySet()
@@ -33,7 +33,7 @@ final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
                                     .orElse(nothingDiscounted(productsOrEmptyIfNull));
     }
 
-    private OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> productsOrEmptyIfNull, Multiset.Entry<Product> productEntry) {
+    private PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> productsOrEmptyIfNull, Multiset.Entry<Product> productEntry) {
         final int productsAmount = productEntry.getCount();
         final int applicableDiscountsAmount = productsAmount / requiredProductsAmount;
 
@@ -50,7 +50,7 @@ final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
                                                       : 0;
                                  remainingProducts.setCount(productToRemoveEntry.getElement(), newCount);
                              });
-        return new OfferApplicationResult(remainingProducts, 0);
+        return new PriceCalculationResult(remainingProducts, 0);
     }
 
 }
