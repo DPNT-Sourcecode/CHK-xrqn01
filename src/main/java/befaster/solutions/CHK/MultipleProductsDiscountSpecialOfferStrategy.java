@@ -16,7 +16,8 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
 
     @Override
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        return null;
+        products.stream()
+                .filter(product -> product.getId() == productId)
     }
 
 }
