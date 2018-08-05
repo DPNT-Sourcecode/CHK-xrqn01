@@ -11,15 +11,17 @@ class FreebieSpecialOfferStrategySpecTest extends Specification {
     static INVALID_PRODUCT_ID = 'X' as char
     static FREEBIE_PRODUCT_ID = 'F' as char
     static REQUIRED_PRODUCTS_AMOUNT = 2 as int
-    static PRODUCTS_PRICE_WITH_DISCOUNT = (PRODUCT_PRICE_WITHOUT_DISCOUNT / 2) as int
+    static PRODUCT_PRICE = 10 as int
+    static PRODUCT = new Product(PRODUCT_ID, PRODUCT_PRICE)
+    static FREE_PRODUCT = new Product(FREEBIE_PRODUCT_ID, PRODUCT_PRICE)
     static INVALID_PRODUCT = new Product(INVALID_PRODUCT_ID, 1000)
-    static PRODUCT = new Product(PRODUCT_ID, PRODUCT_PRICE_WITHOUT_DISCOUNT)
 
     @Subject
-    def strategy = MultipleProductsDiscountSpecialOfferStrategy.builder().productId(PRODUCT.getId())
-                                                               .productsAmount(REQUIRED_PRODUCTS_AMOUNT)
-                                                               .discountPrice(PRODUCTS_PRICE_WITH_DISCOUNT)
-                                                               .build()
+    def strategy = FreebieSpecialOfferStrategy.builder()
+                                              .productId(PRODUCT_ID)
+                                              .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
+                                              .freeProductId(FREEBIE_PRODUCT_ID)
+                                              .build()
 
     @Unroll
     "should return remaining products=#expectedRemainingProducts and price=#expectedPrice for given #givenProducts"() {
@@ -39,7 +41,7 @@ class FreebieSpecialOfferStrategySpecTest extends Specification {
           null                                                  || []                                           | 0
           []                                                    || []                                           | 0
           [PRODUCT, INVALID_PRODUCT]                            || [PRODUCT, INVALID_PRODUCT]                   | 0
-          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                  || []                                           | PRODUCTS_PRICE_WITH_DISCOUNT
+          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                  || []                                           | 0
           [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT || [INVALID_PRODUCT] * REQUIRED_PRODUCTS_AMOUNT | PRODUCTS_PRICE_WITH_DISCOUNT
     }
 

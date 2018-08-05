@@ -1,12 +1,14 @@
 package befaster.solutions.CHK;
 
 import com.google.common.collect.HashMultiset;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
-import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
 
-@RequiredArgsConstructor(access = PACKAGE)
-class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
+@Builder
+@RequiredArgsConstructor(access = PRIVATE)
+final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
 
     private final char productId;
     private final int requiredProductsAmount;
@@ -16,4 +18,5 @@ class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
         return null;
     }
+
 }

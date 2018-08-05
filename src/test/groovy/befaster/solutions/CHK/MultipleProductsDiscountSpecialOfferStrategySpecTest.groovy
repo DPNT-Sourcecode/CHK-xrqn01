@@ -12,8 +12,8 @@ class MultipleProductsDiscountSpecialOfferStrategySpecTest extends Specification
     static REQUIRED_PRODUCTS_AMOUNT = 2 as int
     static PRODUCT_PRICE_WITHOUT_DISCOUNT = 10 as int
     static PRODUCTS_PRICE_WITH_DISCOUNT = (PRODUCT_PRICE_WITHOUT_DISCOUNT / 2) as int
-    static INVALID_PRODUCT = new Product(INVALID_PRODUCT_ID, 1000)
     static PRODUCT = new Product(PRODUCT_ID, PRODUCT_PRICE_WITHOUT_DISCOUNT)
+    static INVALID_PRODUCT = new Product(INVALID_PRODUCT_ID, 1000)
 
     @Subject
     def strategy = MultipleProductsDiscountSpecialOfferStrategy.builder().productId(PRODUCT.getId())

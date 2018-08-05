@@ -8,11 +8,11 @@ import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 
 import static befaster.solutions.CHK.SpecialOfferStrategy.OfferApplicationResult.nothingDiscounted;
-import static lombok.AccessLevel.PACKAGE;
+import static lombok.AccessLevel.PRIVATE;
 
 @Builder
-@RequiredArgsConstructor(access = PACKAGE)
-class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrategy {
+@RequiredArgsConstructor(access = PRIVATE)
+final class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrategy {
 
     private final char productId;
     private final int productsAmount;
