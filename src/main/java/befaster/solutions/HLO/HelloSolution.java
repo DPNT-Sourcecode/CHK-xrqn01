@@ -5,8 +5,6 @@ import java.util.Optional;
 
 public class HelloSolution {
 
-    // PLEASE DON'T MIND ME, I'M JUST TESTING THE RECORDER
-
     public static void main(String[] args) {
         final Dimension screenSize = Toolkit.getDefaultToolkit()
                                             .getScreenSize();
