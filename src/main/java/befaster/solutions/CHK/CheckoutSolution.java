@@ -1,7 +1,7 @@
 package befaster.solutions.CHK;
 
+import befaster.solutions.CHK.PriceCalculationStrategy.PriceCalculationResult;
 import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
 
 import java.util.List;
 import java.util.Map;
@@ -74,18 +74,13 @@ public class CheckoutSolution {
     }
 
     private int calculatePriceOfProducts(List<Product> products) {
-        priceCalculationStrategiesByPriority.stream().coll
-        HashMultiset.create(products)
-    }
-
-    private int countProductsWithId(List<Product> products, char givenId) {
-        return (int) products.stream()
-                             .map(Product::getId)
-                             .filter(id -> id == givenId)
-                             .count();
-    }
-
-    private int calculateProductsValue(Multiset.Entry<Product> productEntry) {
-
+        HashMultiset<Product> productsHashMultiSet = HashMultiset.create(products);
+        int price = NO_PRODUCTS_VALUE;
+        for (PriceCalculationStrategy strategy : priceCalculationStrategiesByPriority) {
+            final PriceCalculationResult result = strategy.applySpecialOfferTo(productsHashMultiSet);
+            price += result.getPriceOfDiscountedProducts();
+            productsHashMultiSet = result.getRemainingProducts();
+        }
+        return price;
     }
 }
