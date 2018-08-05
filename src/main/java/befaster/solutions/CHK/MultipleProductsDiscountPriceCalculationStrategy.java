@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
-import static befaster.solutions.CHK.PriceCalculationStrategy.PriceCalculationResult.nothingDiscounted;
+import static befaster.solutions.CHK.PriceCalculationStrategy.PriceCalculationResult.nothingCalculated;
 import static lombok.AccessLevel.PRIVATE;
 
 @Builder
@@ -28,7 +28,7 @@ final class MultipleProductsDiscountPriceCalculationStrategy implements PriceCal
                                                                         .getId() == productId)
                                     .findAny()
                                     .map(productEntry -> applySpecialOfferTo(productsOrEmptyIfNull, productEntry))
-                                    .orElse(nothingDiscounted(productsOrEmptyIfNull));
+                                    .orElse(nothingCalculated(productsOrEmptyIfNull));
     }
 
     private PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products, Multiset.Entry<Product> productEntry) {

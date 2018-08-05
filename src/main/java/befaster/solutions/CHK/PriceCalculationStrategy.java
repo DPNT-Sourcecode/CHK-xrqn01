@@ -15,7 +15,7 @@ interface PriceCalculationStrategy {
         private final HashMultiset<Product> remainingProducts;
         private final int priceOfDiscountedProducts;
 
-        static PriceCalculationResult nothingDiscounted(HashMultiset<Product> remainingProducts) {
+        static PriceCalculationResult nothingCalculated(HashMultiset<Product> remainingProducts) {
             return new PriceCalculationResult(remainingProducts, 0);
         }
 
