@@ -95,21 +95,6 @@ public class CheckoutSolution {
     }
 
     private int calculateProductsValue(Multiset.Entry<Product> productEntry) {
-        final int productOccurrencesCount = productEntry.getCount();
-        final Product product = productEntry.getElement();
-        final DiscountOffer discountOffer = specialOffersByPriority.get(product.getId());
 
-        if (discountOffer != null) {
-            final int productsAmountRequiredForOffer = discountOffer.getProductsAmount();
-            final int applyOfferTimes = productOccurrencesCount / productsAmountRequiredForOffer;
-            final int applyOfferToProducts = applyOfferTimes * productsAmountRequiredForOffer;
-            final int discountPriceTotal = discountOffer.getDiscountPrice() * applyOfferTimes;
-            final int nonDiscountedProductsAmount = productOccurrencesCount - applyOfferToProducts;
-            final int nonDiscountedPriceTotal = nonDiscountedProductsAmount * product.getPrice();
-            return discountPriceTotal + nonDiscountedPriceTotal;
-        }
-        else {
-            return productOccurrencesCount * product.getPrice();
-        }
     }
 }

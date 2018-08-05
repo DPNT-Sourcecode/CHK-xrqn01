@@ -34,8 +34,16 @@ class NonDiscountStrategySpecTest extends Specification {
           [FREE_PRODUCT, INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) || [INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) | 0
     }
 
-    def prices() {
-        
+    static randomProduct() {
+        return new Product(randomProductId(), randomPrice())
+    }
+
+    static randomProductId() {
+        (new Random().nextInt(25) + 65) as char
+    }
+
+    static randomPrice() {
+        new Random().nextInt(100)
     }
 
 }
