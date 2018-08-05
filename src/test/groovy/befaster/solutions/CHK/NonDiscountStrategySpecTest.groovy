@@ -11,25 +11,24 @@ class NonDiscountStrategySpecTest extends Specification {
     def strategy = new NonDiscountStrategy()
 
     @Unroll
-    "should return remaining products=#expectedRemainingProducts and price=#expectedPrice for given #givenProducts"() {
+    "should return no remaining products and a sum of their price for given #givenProducts"() {
         given:
           def givenProductsMultiSet = givenProducts != null ? HashMultiset.create(givenProducts) : null
-          def expectedProductsMultiSet = HashMultiset.create expectedRemainingProducts
 
         when:
           def result = strategy.applySpecialOfferTo givenProductsMultiSet
 
         then:
-          result.getRemainingProducts() == expectedProductsMultiSet
-          result.getPriceOfDiscountedProducts() == expectedPrice
+          result.getRemainingProducts() == HashMultiset.create()
+          result.getPriceOfDiscountedProducts() == givenProducts?.inject({ a, b -> a.price + b.price })
 
         where:
-          givenProducts      || expectedRemainingProducts | expectedPrice
-          null               || []                        | 0
-          []                 || []                        | 0
-          randomProducts(1)  || []                        | givenProducts.inject { it.getPrice }
-          randomProducts(5)  || []                        | givenProducts.inject { it.getPrice }
-          randomProducts(10) || []                        | givenProducts.inject { it.getPrice }
+          givenProducts      || expectedPrice
+          null               || 0
+          []                 || 0
+          randomProducts(1)  || givenProducts.inject { it.getPrice }
+          randomProducts(5)  || givenProducts.inject { it.getPrice }
+          randomProducts(10) || givenProducts.inject { it.getPrice }
     }
 
     static randomProducts(int amount) {
