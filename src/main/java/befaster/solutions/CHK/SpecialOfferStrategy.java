@@ -1,12 +1,14 @@
 package befaster.solutions.CHK;
 
 import com.google.common.collect.HashMultiset;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 interface SpecialOfferStrategy {
 
-    HashMultiset<Product> applySpecialOfferTo(HashMultiset<Product> products);
+    OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products);
 
+    @Getter
     @RequiredArgsConstructor
     static class OfferApplicationResult {
 
