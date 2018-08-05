@@ -10,7 +10,6 @@ import java.util.function.Function;
 import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
@@ -20,21 +19,34 @@ public class CheckoutSolution {
     private final static int INVALID_PRICE_VALUE = -1;
     private final static int NO_PRODUCTS_VALUE = 0;
 
-    private final static Map<Character, Product> DEFAULT_PRODUCTS =
-            listOfEntitiesWithProductIdToIdEntityMap(asList(new Product('A', 50),
-                                                            new Product('B', 30),
-                                                            new Product('C', 20),
-                                                            new Product('D', 15),
-                                                            new Product('E', 40)),
-                                                     Product::getId);
+    private final static Map<Character, Product> DEFAULT_PRODUCTS = listOfEntitiesWithProductIdToIdEntityMap(asList(new Product('A', 50),
+                                                                                                                    new Product('B', 30),
+                                                                                                                    new Product('C', 20),
+                                                                                                                    new Product('D', 15),
+                                                                                                                    new Product('E', 40)),
+                                                                                                             Product::getId);
 
-    private final static List<DiscountOffer> DEFAULT_DISCOUNT_OFFERS = asList(new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 3, 130),
-                                                                              new DiscountOffer(DEFAULT_PRODUCTS.get('A'), 5, 200),
-                                                                              new DiscountOffer(DEFAULT_PRODUCTS.get('B'), 2, 45));
-
-    private final static Map<Character, FreebieOffer> DEFAULT_FREEBIE_OFFERS =
-            listOfEntitiesWithProductIdToIdEntityMap(singletonList(new FreebieOffer(DEFAULT_PRODUCTS.get('E'), 2, DEFAULT_PRODUCTS.get('B'))),
-                                                     FreebieOffer::getProductId);
+    private final static List<SpecialOfferStrategy> DEFAULT_SPECIAL_OFFERS = asList(FreebieSpecialOfferStrategy.builder()
+                                                                                                               .productId('E')
+                                                                                                               .requiredProductsAmount(2)
+                                                                                                               .freeProductId('B')
+                                                                                                               .build(),
+                                                                                    MultipleProductsDiscountSpecialOfferStrategy.builder()
+                                                                                                                                .productId('A')
+                                                                                                                                .productsAmount(5)
+                                                                                                                                .discountPrice(200)
+                                                                                                                                .build(),
+                                                                                    MultipleProductsDiscountSpecialOfferStrategy.builder()
+                                                                                                                                .productId('A')
+                                                                                                                                .productsAmount(3)
+                                                                                                                                .discountPrice(130)
+                                                                                                                                .build(),
+                                                                                    MultipleProductsDiscountSpecialOfferStrategy.builder()
+                                                                                                                                .productId('B')
+                                                                                                                                .productsAmount(2)
+                                                                                                                                .discountPrice(45)
+                                                                                                                                .build()
+                                                                                   );
 
     private static <T> Map<Character, T> listOfEntitiesWithProductIdToIdEntityMap(List<T> entities, Function<T, Character> idGetter) {
         return entities.stream()
@@ -42,8 +54,7 @@ public class CheckoutSolution {
     }
 
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
-    private final List<DiscountOffer>  specialOffers = DEFAULT_DISCOUNT_OFFERS;
-    private final Map<Character, FreebieOffer> freebieOffers = DEFAULT_FREEBIE_OFFERS;
+    private final List<SpecialOfferStrategy> specialOffers = DEFAULT_SPECIAL_OFFERS;
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)
