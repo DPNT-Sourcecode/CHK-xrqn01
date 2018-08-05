@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.IntStream;
 
 import static java.util.Arrays.asList;
 import static java.util.function.Function.identity;
@@ -54,7 +53,7 @@ public class CheckoutSolution {
     }
 
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
-    private final List<PriceCalculationStrategy> specialOffersByPriority = DEFAULT_SPECIAL_OFFERS;
+    private final List<PriceCalculationStrategy> priceCalculationStrategiesByPriority = DEFAULT_SPECIAL_OFFERS;
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)
@@ -75,16 +74,8 @@ public class CheckoutSolution {
     }
 
     private int calculatePriceOfProducts(List<Product> products) {
-        int amountOfEDiscounts = countProductsWithId(products, 'E') / 2;
-        IntStream.range(0, amountOfEDiscounts)
-                 .forEach(i -> products.remove(DEFAULT_PRODUCTS.get('B')));
-
-        return HashMultiset.create(products)
-                           .entrySet()
-                           .stream()
-                           .map(this::calculateProductsValue)
-                           .reduce(Integer::sum)
-                           .orElse(NO_PRODUCTS_VALUE);
+        priceCalculationStrategiesByPriority.stream().coll
+        HashMultiset.create(products)
     }
 
     private int countProductsWithId(List<Product> products, char givenId) {
