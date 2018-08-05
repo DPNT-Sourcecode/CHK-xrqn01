@@ -4,6 +4,8 @@ import com.google.common.collect.HashMultiset;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @Builder
@@ -16,7 +18,15 @@ final class FreebieSpecialOfferStrategy implements SpecialOfferStrategy {
 
     @Override
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        return null;
+        final HashMultiset<Product> productsOrEmptyIfNull = Optional.ofNullable(products)
+                                                                    .orElse(HashMultiset.create());
+        productsOrEmptyIfNull.entrySet()
+                             .stream()
+                             .filter(productEntry -> productEntry.getElement()
+                                                                 .getId() == productId)
+                             .map(productEntry -> {
+                                
+                             })
     }
 
 }

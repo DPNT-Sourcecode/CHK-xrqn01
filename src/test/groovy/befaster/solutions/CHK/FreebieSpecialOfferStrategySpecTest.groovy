@@ -37,12 +37,14 @@ class FreebieSpecialOfferStrategySpecTest extends Specification {
           result.getPriceOfDiscountedProducts() == expectedPrice
 
         where:
-          givenProducts                                         || expectedRemainingProducts                    | expectedPrice
-          null                                                  || []                                           | 0
-          []                                                    || []                                           | 0
-          [PRODUCT, INVALID_PRODUCT]                            || [PRODUCT, INVALID_PRODUCT]                   | 0
-          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                  || []                                           | 0
-          [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT || [INVALID_PRODUCT] * REQUIRED_PRODUCTS_AMOUNT | PRODUCTS_PRICE_WITH_DISCOUNT
+          givenProducts                                                            || expectedRemainingProducts                                  | expectedPrice
+          null                                                                     || []                                                         | 0
+          []                                                                       || []                                                         | 0
+          [PRODUCT, INVALID_PRODUCT]                                               || [PRODUCT, INVALID_PRODUCT]                                 | 0
+          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                                     || [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                       | 0
+          [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                    || [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT      | 0
+          [FREE_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT)                  || [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                       | 0
+          [FREE_PRODUCT, INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) || [INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) | 0
     }
 
 }
