@@ -20,12 +20,12 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
                                                            .filter(product -> product.getId() == productId)
                                                            .count();
 
-        final int productsAmountRequiredForOffer = productsAmount;
-        final int applyOfferTimes = applicableProductsAmount / productsAmountRequiredForOffer;
-        final int applyOfferToProducts = applyOfferTimes * productsAmountRequiredForOffer;
+        final int applyOfferTimes = applicableProductsAmount / productsAmount;
+        final int applyOfferToProducts = applyOfferTimes * productsAmount;
         final int discountPriceTotal = discountPrice * applyOfferTimes;
         final int nonDiscountedProductsAmount = applicableProductsAmount - applyOfferToProducts;
-        final int nonDiscountedPriceTotal = nonDiscountedProductsAmount * product.getPrice();
+
+        products.setCount()
     }
 
 }
