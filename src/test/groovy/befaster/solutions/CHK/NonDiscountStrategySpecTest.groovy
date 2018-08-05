@@ -20,15 +20,16 @@ class NonDiscountStrategySpecTest extends Specification {
 
         then:
           result.getRemainingProducts() == HashMultiset.create()
-          result.getPriceOfDiscountedProducts() == givenProducts?.inject({ a, b -> a.price + b.price })
+          result.getPriceOfDiscountedProducts() == givenProducts?.inject(0)({ a, b -> a.price + b.price })
 
         where:
-          givenProducts      || expectedPrice
-          null               || 0
-          []                 || 0
-          randomProducts(1)  || givenProducts.inject { it.getPrice }
-          randomProducts(5)  || givenProducts.inject { it.getPrice }
-          randomProducts(10) || givenProducts.inject { it.getPrice }
+          givenProducts << [
+                  null,
+                  [],
+                  randomProducts(1),
+                  randomProducts(5),
+                  randomProducts(10)
+          ]
     }
 
     static randomProducts(int amount) {

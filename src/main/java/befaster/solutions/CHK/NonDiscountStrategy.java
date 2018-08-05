@@ -12,9 +12,12 @@ class NonDiscountStrategy implements PriceCalculationStrategy {
 
     @Override
     public PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        return null;
-//        return Optional.ofNullable(products)
-//                .map(p -> p.entrySet().ma)
+        return Optional.ofNullable(products)
+                       .map(p -> p.entrySet()
+                                  .stream()
+                                  .map(entry -> entry.getCount() * entry.getElement()
+                                                                        .getPrice())
+                                  .reduce(Integer::sum))
     }
 
 }
