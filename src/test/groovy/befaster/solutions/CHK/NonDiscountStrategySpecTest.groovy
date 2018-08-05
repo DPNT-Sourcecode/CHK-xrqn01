@@ -24,10 +24,12 @@ class NonDiscountStrategySpecTest extends Specification {
           result.getPriceOfDiscountedProducts() == expectedPrice
 
         where:
-          givenProducts        || expectedRemainingProducts | expectedPrice
-          null                 || []                        | 0
-          []                   || []                        | 0
-          randomProduct() * 10 || []                        | 0
+          givenProducts                      || expectedRemainingProducts | expectedPrice
+          null                               || []                        | 0
+          []                                 || []                        | 0
+          [randomProduct()]                  || []                        | givenProducts.inject { it.getPrice }
+          (0..9).collect { randomProduct() } || []                        | givenProducts.inject { it.getPrice }
+          randomProduct() * 20               || []                        | givenProducts.inject { it.getPrice }
     }
 
     static randomProduct() {
