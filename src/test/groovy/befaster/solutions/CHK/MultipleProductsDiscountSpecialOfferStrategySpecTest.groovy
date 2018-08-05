@@ -24,16 +24,23 @@ class MultipleProductsDiscountSpecialOfferStrategySpecTest extends Specification
     @Unroll
     "should return remaining products=#expectedRemainingProducts and price=#expectedPrice for given #givenProducts"() {
         given:
-          HashMultiset.create()
+          def givenProductsMultiSet = HashMultiset.create givenProducts
+          def expectedProductsMultiSet = HashMultiset.create expectedRemainingProducts
 
         when:
-          strategy.applySpecialOfferTo()
+          def result = strategy.applySpecialOfferTo givenProductsMultiSet
+
+        then:
+          result.getRemainingProducts() == expectedProductsMultiSet
+          result.getPriceOfDiscountedProducts() == expectedPrice
 
         where:
-          givenProducts              || expectedRemainingProducts  | expectedPrice
-          []                         || []                         | 0
-          [PRODUCT, INVALID_PRODUCT] || [PRODUCT, INVALID_PRODUCT] | 0
-          [PRODUCT, PRODUCT]         || []                         | PRODUCTS_PRICE_WITH_DISCOUNT
+          givenProducts                                         || expectedRemainingProducts  | expectedPrice
+          null                                                  || []                         | -1
+          []                                                    || []                         | 0
+          [PRODUCT, INVALID_PRODUCT]                            || [PRODUCT, INVALID_PRODUCT] | 0
+          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                  || []                         | PRODUCTS_PRICE_WITH_DISCOUNT
+          [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT || []                         | PRODUCTS_PRICE_WITH_DISCOUNT
     }
 
 }

@@ -12,8 +12,8 @@ interface SpecialOfferStrategy {
     @RequiredArgsConstructor
     static class OfferApplicationResult {
 
-        private final HashMultiset<Product> productsAfterOfferHasBeenApplied;
-        private final int moneySpentWithDiscount;
+        private final HashMultiset<Product> remainingProducts;
+        private final int priceOfDiscountedProducts;
 
     }
 
