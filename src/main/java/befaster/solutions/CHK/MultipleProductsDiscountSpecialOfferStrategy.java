@@ -16,16 +16,18 @@ class MultipleProductsDiscountSpecialOfferStrategy implements SpecialOfferStrate
 
     @Override
     public OfferApplicationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        final int applicableProductsAmount = (int) products.stream()
-                                                           .filter(product -> product.getId() == productId)
-                                                           .count();
-
-        final int applyOfferTimes = applicableProductsAmount / productsAmount;
-        final int applyOfferToProducts = applyOfferTimes * productsAmount;
-        final int discountPriceTotal = discountPrice * applyOfferTimes;
-        final int nonDiscountedProductsAmount = applicableProductsAmount - applyOfferToProducts;
-
-        products.setCount()
+        products.entrySet()
+                .stream()
+                .filter(e -> e.getElement()
+                              .getId() == productId)
+                .findAny()
+                .map(productEntry -> {
+                    final int applicableProductsAmount = productEntry.getCount();
+                    final int applyOfferTimes = applicableProductsAmount / productsAmount;
+                    final int applyOfferToProducts = applyOfferTimes * productsAmount;
+                    final int discountPriceTotal = discountPrice * applyOfferTimes;
+                    final int nonDiscountedProductsAmount = applicableProductsAmount - applyOfferToProducts;
+                });
     }
 
 }
