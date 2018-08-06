@@ -46,7 +46,21 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
         final int applicableDiscountAmount = applicableProductsAmount / requiredProductsAmount;
         final int discountPrice = applicableDiscountAmount * discountedPrice;
 
-        return new PriceCalculationResult(HashMultiset.create(), discountPrice);
+        final HashMultiset<Product> result = HashMultiset.create(products);
+
+        int toRemoveProductsAmount = applicableProductsAmount;
+        for (Entry<Product> entry : applicableProductsByPrice) {
+            int count = entry.getCount();
+            if (count - toRemoveProductsAmount < 0) {
+                count = 0;
+                toRemoveProductsAmount -= count;
+            }
+            else {
+                
+            }
+        }
+
+        return new PriceCalculationResult(result, discountPrice);
     }
 
     @Override
