@@ -19,6 +19,11 @@ final class MultipleProductsDiscountPriceCalculationStrategy implements PriceCal
     private final int discountPrice;
 
     @Override
+    public boolean isApplicableTo(Product product) {
+        return product.getId() == productId;
+    }
+
+    @Override
     public PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products) {
         final HashMultiset<Product> productsOrEmptyIfNull = Optional.ofNullable(products)
                                                                     .orElse(HashMultiset.create());

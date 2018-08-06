@@ -6,7 +6,7 @@ import spock.lang.Unroll
 
 class CheckoutSolutionSpecTest extends Specification {
 
-    static INVALID_PRODUCT_ID = 'X'
+    static INVALID_PRODUCT_ID = '!'
 
     @Subject
     def solution = new CheckoutSolution()

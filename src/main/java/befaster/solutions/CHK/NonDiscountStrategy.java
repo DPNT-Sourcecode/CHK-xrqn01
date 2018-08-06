@@ -12,6 +12,11 @@ import static lombok.AccessLevel.PACKAGE;
 class NonDiscountStrategy implements PriceCalculationStrategy {
 
     @Override
+    public boolean isApplicableTo(Product product) {
+        return true;
+    }
+
+    @Override
     public PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products) {
         return Optional.ofNullable(products)
                        .flatMap(p -> p.entrySet()

@@ -8,6 +8,7 @@ import lombok.ToString;
 interface PriceCalculationStrategy {
 
     PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products);
+    boolean isApplicableTo(Product product);
 
     @Getter
     @ToString

@@ -113,4 +113,10 @@ public class CheckoutDataSets {
                        .collect(toMap(idGetter, identity()));
     }
 
+    public static void main(String[] args) {
+        DEFAULT_PRODUCTS.forEach(product -> {
+
+        });
+    }
+
 }
