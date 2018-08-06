@@ -49,9 +49,18 @@ class FreebiePriceCalculationStrategySpecTest extends Specification {
         given: "strategy where product ID is the same as freebie product ID"
           def strategy = FreebiePriceCalculationStrategy.builder()
                                                         .productId(FREEBIE_PRODUCT_ID)
-                                                        .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
+                                                        .requiredProductsAmount(3)
                                                         .freeProductId(FREEBIE_PRODUCT_ID)
                                                         .build()
+
+          def givenProductsMultiSet = HashMultiset.create([FREE_PRODUCT, FREE_PRODUCT, FREE_PRODUCT])
+
+        when:
+          def result = strategy.applySpecialOfferTo givenProductsMultiSet
+
+        then:
+          result.getRemainingProducts() == HashMultiset.create([FREE_PRODUCT, FREE_PRODUCT])
+          result.getPriceOfDiscountedProducts() == 0 as int
     }
 
 }
