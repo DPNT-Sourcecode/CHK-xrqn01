@@ -31,12 +31,22 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
             return PriceCalculationResult.nothingCalculated(HashMultiset.create());
         }
 
-        final List<Entry<Product>> collect = products.entrySet()
-                                                     .stream()
-                                                     .filter(productEntry -> isApplicableTo(productEntry.getElement()))
-                                                     .sorted(comparingInt(firstEntry -> firstEntry.getElement()
-                                                                                                  .getPrice()))
-                                                     .collect(toList());
+        final List<Entry<Product>> applicableProductsByPrice = products.entrySet()
+                                                                       .stream()
+                                                                       .filter(productEntry -> isApplicableTo(productEntry.getElement()))
+                                                                       .sorted(comparingInt(firstEntry -> firstEntry.getElement()
+                                                                                                                    .getPrice()))
+                                                                       .collect(toList());
+
+        final int applicableProductsAmount = applicableProductsByPrice.stream()
+                                                                      .map(Entry::getCount)
+                                                                      .reduce(Integer::sum)
+                                                                      .orElse(0);
+
+        final int applicableDiscountAmount = applicableProductsAmount / requiredProductsAmount;
+        final int discountPrice = applicableDiscountAmount * discountedPrice;
+
+        return new PriceCalculationResult(HashMultiset.create(), discountPrice);
     }
 
     @Override
