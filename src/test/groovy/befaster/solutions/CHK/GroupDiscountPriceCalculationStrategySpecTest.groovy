@@ -34,17 +34,17 @@ class GroupDiscountPriceCalculationStrategySpecTest extends Specification {
 
         where:
           givenProducts                                                        || expectedRemainingProducts                      | expectedPrice
-          null                                                                 || []                                             | 0
-          []                                                                   || []                                             | 0
-          [NON_APPLICABLE_PRODUCT]                                             || [NON_APPLICABLE_PRODUCT]                       | 0
-          [APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT]                       || [APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] | 0
-          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
-          [APPLICABLE_PRODUCT_B, APPLICABLE_PRODUCT_B, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
-          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
-          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_B, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
-          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
-          [APPLICABLE_PRODUCT_B, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
-          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          null                                                                 || []                                             | 0
+//          []                                                                   || []                                             | 0
+//          [NON_APPLICABLE_PRODUCT]                                             || [NON_APPLICABLE_PRODUCT]                       | 0
+//          [APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT]                       || [APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] | 0
+//          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          [APPLICABLE_PRODUCT_B, APPLICABLE_PRODUCT_B, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_B, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          [APPLICABLE_PRODUCT_B, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+//          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
         and: "should always leave out the cheapest product"
           [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_C] || [APPLICABLE_PRODUCT_A] | DISCOUNTED_PRICE
           [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A] || [APPLICABLE_PRODUCT_A] | DISCOUNTED_PRICE

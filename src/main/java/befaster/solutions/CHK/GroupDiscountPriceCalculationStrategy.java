@@ -32,11 +32,12 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
             return PriceCalculationResult.nothingCalculated(HashMultiset.create());
         }
 
+        final Comparator<Entry<Product>> comparator = comparingInt(e -> e.getElement()
+                                                                         .getPrice());
         final List<Entry<Product>> applicableProductsByPrice = products.entrySet()
                                                                        .stream()
                                                                        .filter(productEntry -> isApplicableTo(productEntry.getElement()))
-                                                                       .sorted(comparingInt(e -> e.getElement()
-                                                                                                                    .getPrice()).reversed())
+                                                                       .sorted(comparator)
                                                                        .collect(toList());
 
         final int applicableProductsAmount = applicableProductsByPrice.stream()
