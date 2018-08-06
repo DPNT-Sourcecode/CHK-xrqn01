@@ -19,6 +19,11 @@ class FreebiePriceCalculationStrategy implements PriceCalculationStrategy {
     private final char freeProductId;
 
     @Override
+    public boolean isApplicableTo(Product product) {
+        return product.getId() == productId;
+    }
+
+    @Override
     public PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products) {
         final HashMultiset<Product> productsOrEmptyIfNull = Optional.ofNullable(products)
                                                                     .orElse(HashMultiset.create());

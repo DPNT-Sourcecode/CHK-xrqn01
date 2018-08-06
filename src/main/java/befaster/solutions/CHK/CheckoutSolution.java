@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static befaster.solutions.CHK.CheckoutDataSets.DEFAULT_PRODUCTS;
-import static befaster.solutions.CHK.CheckoutDataSets.DEFAULT_SPECIAL_OFFERS;
+import static befaster.solutions.CHK.CheckoutDataSets.DEFAULT_PRICE_CALCULATION_STRATEGIES;
 import static java.util.stream.Collectors.toList;
 
 public class CheckoutSolution {
@@ -16,7 +16,7 @@ public class CheckoutSolution {
     private final static int INVALID_PRICE_VALUE = -1;
     private final static int NO_PRODUCTS_VALUE = 0;
     private final Map<Character, Product> products = DEFAULT_PRODUCTS;
-    private final List<PriceCalculationStrategy> priceCalculationStrategiesByPriority = DEFAULT_SPECIAL_OFFERS;
+    private final List<PriceCalculationStrategy> priceCalculationStrategiesByPriority = DEFAULT_PRICE_CALCULATION_STRATEGIES;
 
     public Integer checkout(String skus) {
         return Optional.ofNullable(skus)

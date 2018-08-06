@@ -38,75 +38,76 @@ public class CheckoutDataSets {
                                                                                                             new Product('Z', 50)),
                                                                                                      Product::getId);
 
-    final static List<PriceCalculationStrategy> DEFAULT_SPECIAL_OFFERS = asList(FreebiePriceCalculationStrategy.builder()
-                                                                                                               .productId('E')
-                                                                                                               .requiredProductsAmount(2)
-                                                                                                               .freeProductId('B')
-                                                                                                               .build(),
-                                                                                new SameFreebiePriceCalculationStrategy('F', 2),
-                                                                                FreebiePriceCalculationStrategy.builder()
-                                                                                                               .productId('N')
-                                                                                                               .requiredProductsAmount(3)
-                                                                                                               .freeProductId('M')
-                                                                                                               .build(),
-                                                                                FreebiePriceCalculationStrategy.builder()
-                                                                                                               .productId('R')
-                                                                                                               .requiredProductsAmount(3)
-                                                                                                               .freeProductId('Q')
-                                                                                                               .build(),
-                                                                                new SameFreebiePriceCalculationStrategy('U', 3),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('A')
-                                                                                                                                .productsAmount(5)
-                                                                                                                                .discountPrice(200)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('A')
-                                                                                                                                .productsAmount(3)
-                                                                                                                                .discountPrice(130)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('B')
-                                                                                                                                .productsAmount(2)
-                                                                                                                                .discountPrice(45)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('H')
-                                                                                                                                .productsAmount(5)
-                                                                                                                                .discountPrice(45)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('H')
-                                                                                                                                .productsAmount(10)
-                                                                                                                                .discountPrice(80)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('K')
-                                                                                                                                .productsAmount(2)
-                                                                                                                                .discountPrice(150)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('P')
-                                                                                                                                .productsAmount(5)
-                                                                                                                                .discountPrice(200)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('Q')
-                                                                                                                                .productsAmount(3)
-                                                                                                                                .discountPrice(80)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('V')
-                                                                                                                                .productsAmount(3)
-                                                                                                                                .discountPrice(130)
-                                                                                                                                .build(),
-                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
-                                                                                                                                .productId('V')
-                                                                                                                                .productsAmount(2)
-                                                                                                                                .discountPrice(90)
-                                                                                                                                .build(),
-                                                                                new NonDiscountStrategy()
-                                                                               );
+    final static List<PriceCalculationStrategy> DEFAULT_PRICE_CALCULATION_STRATEGIES =
+            asList(FreebiePriceCalculationStrategy.builder()
+                                                  .productId('E')
+                                                  .requiredProductsAmount(2)
+                                                  .freeProductId('B')
+                                                  .build(),
+                   new SameFreebiePriceCalculationStrategy('F', 2),
+                   FreebiePriceCalculationStrategy.builder()
+                                                  .productId('N')
+                                                  .requiredProductsAmount(3)
+                                                  .freeProductId('M')
+                                                  .build(),
+                   FreebiePriceCalculationStrategy.builder()
+                                                  .productId('R')
+                                                  .requiredProductsAmount(3)
+                                                  .freeProductId('Q')
+                                                  .build(),
+                   new SameFreebiePriceCalculationStrategy('U', 3),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('A')
+                                                                   .productsAmount(5)
+                                                                   .discountPrice(200)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('A')
+                                                                   .productsAmount(3)
+                                                                   .discountPrice(130)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('B')
+                                                                   .productsAmount(2)
+                                                                   .discountPrice(45)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('H')
+                                                                   .productsAmount(5)
+                                                                   .discountPrice(45)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('H')
+                                                                   .productsAmount(10)
+                                                                   .discountPrice(80)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('K')
+                                                                   .productsAmount(2)
+                                                                   .discountPrice(150)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('P')
+                                                                   .productsAmount(5)
+                                                                   .discountPrice(200)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('Q')
+                                                                   .productsAmount(3)
+                                                                   .discountPrice(80)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('V')
+                                                                   .productsAmount(3)
+                                                                   .discountPrice(130)
+                                                                   .build(),
+                   MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                   .productId('V')
+                                                                   .productsAmount(2)
+                                                                   .discountPrice(90)
+                                                                   .build(),
+                   new NonDiscountStrategy()
+                  );
 
     private static <T> Map<Character, T> listOfEntitiesWithProductIdToIdEntityMap(List<T> entities, Function<T, Character> idGetter) {
         return entities.stream()
@@ -114,9 +115,14 @@ public class CheckoutDataSets {
     }
 
     public static void main(String[] args) {
-        DEFAULT_PRODUCTS.forEach(product -> {
+        DEFAULT_PRODUCTS.values()
+                        .stream()
+                        .forEach(product -> {
+                            System.out.print("| " + product.getId() + "    | " + product.getPrice() + "    | ");
+                            DEFAULT_PRICE_CALCULATION_STRATEGIES.stream()
+                                                                .filter(strategy -> strategy.isApplicableTo(product))
 
-        });
+                        });
     }
 
 }
