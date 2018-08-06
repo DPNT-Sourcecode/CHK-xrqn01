@@ -22,13 +22,19 @@ public class CheckoutSolution {
                                                                                                                     new Product('B', 30),
                                                                                                                     new Product('C', 20),
                                                                                                                     new Product('D', 15),
-                                                                                                                    new Product('E', 40)),
+                                                                                                                    new Product('E', 40),
+                                                                                                                    new Product('F', 10)),
                                                                                                              Product::getId);
 
     private final static List<PriceCalculationStrategy> DEFAULT_SPECIAL_OFFERS = asList(FreebiePriceCalculationStrategy.builder()
                                                                                                                        .productId('E')
                                                                                                                        .requiredProductsAmount(2)
                                                                                                                        .freeProductId('B')
+                                                                                                                       .build(),
+                                                                                        FreebiePriceCalculationStrategy.builder()
+                                                                                                                       .productId('F')
+                                                                                                                       .requiredProductsAmount(3)
+                                                                                                                       .freeProductId('F')
                                                                                                                        .build(),
                                                                                         MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                                                                                         .productId('A')

@@ -36,6 +36,11 @@ class CheckoutSolutionSpecTest extends Specification {
           "EEB"                   || (2 * 40)
           "EEBB"                  || (2 * 40) + 30
           "AAAEEBB"               || 130 + (2 * 40) + 30
+          "FF"                    || 2 * 10
+          "FFF"                   || 2 * 10
+          "FFFF"                  || 3 * 10
+          "FFFFF"                 || 4 * 10
+          "FFFFFF"                || 4 * 10
     }
 
 }
