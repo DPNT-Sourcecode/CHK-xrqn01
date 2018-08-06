@@ -12,7 +12,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 @Builder
 @RequiredArgsConstructor(access = PRIVATE)
-final class FreebiePriceCalculationStrategy implements PriceCalculationStrategy {
+class FreebiePriceCalculationStrategy implements PriceCalculationStrategy {
 
     private final char productId;
     private final int requiredProductsAmount;
