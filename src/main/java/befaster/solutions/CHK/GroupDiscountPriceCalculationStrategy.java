@@ -1,6 +1,8 @@
 package befaster.solutions.CHK;
 
+import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultiset;
+import com.google.common.collect.Multiset;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +26,13 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
 
     @Override
     public PriceCalculationResult applySpecialOfferTo(HashMultiset<Product> products) {
-        return null;
+        if (products == null) {
+            return PriceCalculationResult.nothingCalculated(HashMultiset.create());
+        }
+
+        products.entrySet()
+                .stream()
+                .filter(Predicates.compose(this::isApplicableTo, Multiset.Entry<Product>::getElement))
     }
 
     @Override
