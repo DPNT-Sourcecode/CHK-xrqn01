@@ -1,8 +1,5 @@
 package befaster.solutions.CHK;
 
-import lombok.Builder;
-
-@Builder
 public class SameFreebiePriceCalculationStrategy extends FreebiePriceCalculationStrategy {
 
     private final char productId;

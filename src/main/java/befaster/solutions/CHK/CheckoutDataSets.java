@@ -43,11 +43,7 @@ public class CheckoutDataSets {
                                                                                                                .requiredProductsAmount(2)
                                                                                                                .freeProductId('B')
                                                                                                                .build(),
-                                                                                FreebiePriceCalculationStrategy.builder()
-                                                                                                               .productId('F')
-                                                                                                               .requiredProductsAmount(3)
-                                                                                                               .freeProductId('F')
-                                                                                                               .build(),
+                                                                                new SameFreebiePriceCalculationStrategy('F', 2),
                                                                                 FreebiePriceCalculationStrategy.builder()
                                                                                                                .productId('N')
                                                                                                                .requiredProductsAmount(3)
@@ -58,11 +54,7 @@ public class CheckoutDataSets {
                                                                                                                .requiredProductsAmount(3)
                                                                                                                .freeProductId('Q')
                                                                                                                .build(),
-                                                                                FreebiePriceCalculationStrategy.builder()
-                                                                                                               .productId('U')
-                                                                                                               .requiredProductsAmount(4)
-                                                                                                               .freeProductId('U')
-                                                                                                               .build(),
+                                                                                new SameFreebiePriceCalculationStrategy('U', 3),
                                                                                 MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                                                                                 .productId('A')
                                                                                                                                 .productsAmount(5)
