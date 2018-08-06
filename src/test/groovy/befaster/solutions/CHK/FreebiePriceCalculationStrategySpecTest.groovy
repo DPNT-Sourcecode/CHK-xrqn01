@@ -46,11 +46,12 @@ class FreebiePriceCalculationStrategySpecTest extends Specification {
     }
 
     def "should mark the same product category as freebie correctly"() {
-        def strategy = FreebiePriceCalculationStrategy.builder()
-                                                      .productId(PRODUCT_ID)
-                                                      .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
-                                                      .freeProductId(FREEBIE_PRODUCT_ID)
-                                                      .build()
+        given: "strategy where product ID is the same as freebie product ID"
+          def strategy = FreebiePriceCalculationStrategy.builder()
+                                                        .productId(FREEBIE_PRODUCT_ID)
+                                                        .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
+                                                        .freeProductId(FREEBIE_PRODUCT_ID)
+                                                        .build()
     }
 
 }
