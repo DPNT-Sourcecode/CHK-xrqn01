@@ -5,6 +5,7 @@ import com.google.common.collect.Multiset.Entry;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,8 +35,8 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
         final List<Entry<Product>> applicableProductsByPrice = products.entrySet()
                                                                        .stream()
                                                                        .filter(productEntry -> isApplicableTo(productEntry.getElement()))
-                                                                       .sorted(comparingInt(firstEntry -> firstEntry.getElement()
-                                                                                                                    .getPrice()))
+                                                                       .sorted(comparingInt(e -> e.getElement()
+                                                                                                                    .getPrice()).reversed())
                                                                        .collect(toList());
 
         final int applicableProductsAmount = applicableProductsByPrice.stream()
@@ -48,7 +49,7 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
 
         final HashMultiset<Product> result = HashMultiset.create(products);
 
-        int toRemoveProductsAmount = applicableProductsAmount;
+        int toRemoveProductsAmount = applicableDiscountAmount * requiredProductsAmount;
         for (Entry<Product> entry : applicableProductsByPrice) {
             int newCount = entry.getCount();
             if (newCount - toRemoveProductsAmount < 0) {
