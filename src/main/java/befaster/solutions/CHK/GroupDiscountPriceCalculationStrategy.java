@@ -50,13 +50,21 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
 
         int toRemoveProductsAmount = applicableProductsAmount;
         for (Entry<Product> entry : applicableProductsByPrice) {
-            int count = entry.getCount();
-            if (count - toRemoveProductsAmount < 0) {
-                count = 0;
-                toRemoveProductsAmount -= count;
+            int newCount = entry.getCount();
+            if (newCount - toRemoveProductsAmount < 0) {
+                newCount = 0;
+                toRemoveProductsAmount -= newCount;
             }
             else {
-                
+                newCount -= toRemoveProductsAmount;
+                toRemoveProductsAmount = 0;
+            }
+
+            Product product = entry.getElement();
+            result.setCount(product, newCount);
+
+            if (toRemoveProductsAmount == 0) {
+                break;
             }
         }
 
