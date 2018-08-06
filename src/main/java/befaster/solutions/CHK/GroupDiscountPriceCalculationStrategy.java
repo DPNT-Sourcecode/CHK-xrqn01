@@ -1,14 +1,15 @@
 package befaster.solutions.CHK;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
+import com.google.common.collect.Multiset.Entry;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.toList;
 import static lombok.AccessLevel.PRIVATE;
 
 @Builder
@@ -30,9 +31,12 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
             return PriceCalculationResult.nothingCalculated(HashMultiset.create());
         }
 
-        products.entrySet()
-                .stream()
-                .filter(Predicates.compose(this::isApplicableTo, Multiset.Entry<Product>::getElement))
+        final List<Entry<Product>> collect = products.entrySet()
+                                                     .stream()
+                                                     .filter(productEntry -> isApplicableTo(productEntry.getElement()))
+                                                     .sorted(comparingInt(firstEntry -> firstEntry.getElement()
+                                                                                                  .getPrice()))
+                                                     .collect(toList());
     }
 
     @Override
