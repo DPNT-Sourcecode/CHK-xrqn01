@@ -32,7 +32,7 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
         String applicableProductsString = applicableProducts.stream()
                                                             .map(Object::toString)
                                                             .collect(Collectors.joining(","));
-        return "buy any " + requiredProductsAmount + " of (S,T,X,Y,Z) for 45";
+        return "buy any " + requiredProductsAmount + " of (" + applicableProductsString + ") for " + discountedPrice;
     }
 
 }
