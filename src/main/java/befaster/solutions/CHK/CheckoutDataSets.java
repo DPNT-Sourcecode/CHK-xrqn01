@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static java.util.function.Function.identity;
@@ -116,12 +117,13 @@ public class CheckoutDataSets {
 
     public static void main(String[] args) {
         DEFAULT_PRODUCTS.values()
-                        .stream()
                         .forEach(product -> {
                             System.out.print("| " + product.getId() + "    | " + product.getPrice() + "    | ");
-                            DEFAULT_PRICE_CALCULATION_STRATEGIES.stream()
-                                                                .filter(strategy -> strategy.isApplicableTo(product))
-
+                            System.out.println(DEFAULT_PRICE_CALCULATION_STRATEGIES.stream()
+                                                                                   .filter(strategy -> strategy.isApplicableTo(product))
+                                                                                   .filter(strategy -> !(strategy instanceof NonDiscountStrategy))
+                                                                                   .map(Object::toString)
+                                                                                   .collect(Collectors.joining(", ")));
                         });
     }
 
