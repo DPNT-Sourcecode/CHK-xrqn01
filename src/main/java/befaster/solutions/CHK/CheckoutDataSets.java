@@ -115,16 +115,16 @@ public class CheckoutDataSets {
                        .collect(toMap(idGetter, identity()));
     }
 
-    public static void main(String[] args) {
-        DEFAULT_PRODUCTS.values()
-                        .forEach(product -> {
-                            System.out.print("| " + product.getId() + "    | " + product.getPrice() + "    | ");
-                            System.out.println(DEFAULT_PRICE_CALCULATION_STRATEGIES.stream()
-                                                                                   .filter(strategy -> strategy.isApplicableTo(product))
-                                                                                   .filter(strategy -> !(strategy instanceof NonDiscountStrategy))
-                                                                                   .map(Object::toString)
-                                                                                   .collect(Collectors.joining(", ")));
-                        });
-    }
+//    public static void main(String[] args) {
+//        DEFAULT_PRODUCTS.values()
+//                        .forEach(product -> {
+//                            System.out.print("| " + product.getId() + "    | " + product.getPrice() + "    | ");
+//                            System.out.println(DEFAULT_PRICE_CALCULATION_STRATEGIES.stream()
+//                                                                                   .filter(strategy -> strategy.isApplicableTo(product))
+//                                                                                   .filter(strategy -> !(strategy instanceof NonDiscountStrategy))
+//                                                                                   .map(Object::toString)
+//                                                                                   .collect(Collectors.joining(", ")));
+//                        });
+//    }
 
 }
