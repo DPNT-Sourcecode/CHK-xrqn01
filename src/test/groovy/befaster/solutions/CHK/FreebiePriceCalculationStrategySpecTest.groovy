@@ -2,7 +2,6 @@ package befaster.solutions.CHK
 
 import com.google.common.collect.HashMultiset
 import spock.lang.Specification
-import spock.lang.Subject
 import spock.lang.Unroll
 
 class FreebiePriceCalculationStrategySpecTest extends Specification {
@@ -16,16 +15,15 @@ class FreebiePriceCalculationStrategySpecTest extends Specification {
     static FREE_PRODUCT = new Product(FREEBIE_PRODUCT_ID, PRODUCT_PRICE)
     static INVALID_PRODUCT = new Product(INVALID_PRODUCT_ID, 1000)
 
-    @Subject
-    def strategy = FreebiePriceCalculationStrategy.builder()
-                                                  .productId(PRODUCT_ID)
-                                                  .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
-                                                  .freeProductId(FREEBIE_PRODUCT_ID)
-                                                  .build()
-
     @Unroll
     "should return remaining products=#expectedRemainingProducts and price=#expectedPrice for given #givenProducts"() {
         given:
+          def strategy = FreebiePriceCalculationStrategy.builder()
+                                                        .productId(PRODUCT_ID)
+                                                        .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
+                                                        .freeProductId(FREEBIE_PRODUCT_ID)
+                                                        .build()
+
           def givenProductsMultiSet = givenProducts != null ? HashMultiset.create(givenProducts) : null
           def expectedProductsMultiSet = HashMultiset.create expectedRemainingProducts
 
@@ -45,6 +43,14 @@ class FreebiePriceCalculationStrategySpecTest extends Specification {
           [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                    || [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT      | 0
           [FREE_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT)                  || [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                       | 0
           [FREE_PRODUCT, INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) || [INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) | 0
+    }
+
+    def "should mark the same product category as freebie correctly"() {
+        def strategy = FreebiePriceCalculationStrategy.builder()
+                                                      .productId(PRODUCT_ID)
+                                                      .requiredProductsAmount(REQUIRED_PRODUCTS_AMOUNT)
+                                                      .freeProductId(FREEBIE_PRODUCT_ID)
+                                                      .build()
     }
 
 }
