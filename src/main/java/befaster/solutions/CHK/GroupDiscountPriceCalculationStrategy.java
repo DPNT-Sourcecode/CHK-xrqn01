@@ -37,7 +37,7 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
         final List<Entry<Product>> applicableProductsByPrice = products.entrySet()
                                                                        .stream()
                                                                        .filter(productEntry -> isApplicableTo(productEntry.getElement()))
-                                                                       .sorted(comparator)
+                                                                       .sorted(comparator.reversed())
                                                                        .collect(toList());
 
         final int applicableProductsAmount = applicableProductsByPrice.stream()
@@ -54,8 +54,8 @@ final class GroupDiscountPriceCalculationStrategy implements PriceCalculationStr
         for (Entry<Product> entry : applicableProductsByPrice) {
             int newCount = entry.getCount();
             if (newCount - toRemoveProductsAmount < 0) {
-                newCount = 0;
                 toRemoveProductsAmount -= newCount;
+                newCount = 0;
             }
             else {
                 newCount -= toRemoveProductsAmount;
