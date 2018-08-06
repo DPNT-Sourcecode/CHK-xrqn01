@@ -48,6 +48,21 @@ public class CheckoutDataSets {
                                                                                                                        .requiredProductsAmount(3)
                                                                                                                        .freeProductId('F')
                                                                                                                        .build(),
+                                                                                FreebiePriceCalculationStrategy.builder()
+                                                                                                               .productId('N')
+                                                                                                               .requiredProductsAmount(3)
+                                                                                                               .freeProductId('M')
+                                                                                                               .build(),
+                                                                                FreebiePriceCalculationStrategy.builder()
+                                                                                                               .productId('R')
+                                                                                                               .requiredProductsAmount(3)
+                                                                                                               .freeProductId('Q')
+                                                                                                               .build(),
+                                                                                FreebiePriceCalculationStrategy.builder()
+                                                                                                               .productId('U')
+                                                                                                               .requiredProductsAmount(4)
+                                                                                                               .freeProductId('U')
+                                                                                                               .build(),
                                                                                         MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                                                                                         .productId('A')
                                                                                                                                         .productsAmount(5)
@@ -63,6 +78,31 @@ public class CheckoutDataSets {
                                                                                                                                         .productsAmount(2)
                                                                                                                                         .discountPrice(45)
                                                                                                                                         .build(),
+                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                                                                                .productId('H')
+                                                                                                                                .productsAmount(5)
+                                                                                                                                .discountPrice(45)
+                                                                                                                                .build(),
+                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                                                                                .productId('H')
+                                                                                                                                .productsAmount(10)
+                                                                                                                                .discountPrice(80)
+                                                                                                                                .build(),
+                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                                                                                .productId('K')
+                                                                                                                                .productsAmount(2)
+                                                                                                                                .discountPrice(150)
+                                                                                                                                .build(),
+                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                                                                                .productId('P')
+                                                                                                                                .productsAmount(5)
+                                                                                                                                .discountPrice(200)
+                                                                                                                                .build(),
+                                                                                MultipleProductsDiscountPriceCalculationStrategy.builder()
+                                                                                                                                .productId('Q')
+                                                                                                                                .productsAmount(3)
+                                                                                                                                .discountPrice(80)
+                                                                                                                                .build(),
                                                                                         new NonDiscountStrategy()
                                                                                        );
 
