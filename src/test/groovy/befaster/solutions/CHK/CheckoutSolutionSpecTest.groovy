@@ -41,6 +41,9 @@ class CheckoutSolutionSpecTest extends Specification {
           "FFFF"                  || 3 * 10
           "FFFFF"                 || 4 * 10
           "FFFFFF"                || 4 * 10
+          "HHHHHHHHHH"            || 80
+          "HHHHHHHHHHH"            || 90
+          "HHHHHHHHHHHH"            || 100
     }
 
 }

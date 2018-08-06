@@ -74,13 +74,13 @@ public class CheckoutDataSets {
                                                                    .build(),
                    MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                    .productId('H')
-                                                                   .productsAmount(5)
-                                                                   .discountPrice(45)
+                                                                   .productsAmount(10)
+                                                                   .discountPrice(80)
                                                                    .build(),
                    MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                    .productId('H')
-                                                                   .productsAmount(10)
-                                                                   .discountPrice(80)
+                                                                   .productsAmount(5)
+                                                                   .discountPrice(45)
                                                                    .build(),
                    MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                    .productId('K')
