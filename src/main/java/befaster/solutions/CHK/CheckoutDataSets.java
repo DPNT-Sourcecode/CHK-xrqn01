@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 import static java.util.function.Function.identity;
@@ -56,6 +57,11 @@ public class CheckoutDataSets {
                                                   .freeProductId('Q')
                                                   .build(),
                    new SameFreebiePriceCalculationStrategy('U', 3),
+                   GroupDiscountPriceCalculationStrategy.builder()
+                                                        .applicableProducts(asList('S', 'T', 'X', 'Y', 'Z'))
+                                                        .requiredProductsAmount(3)
+                                                        .discountedPrice(45)
+                                                        .build(),
                    MultipleProductsDiscountPriceCalculationStrategy.builder()
                                                                    .productId('A')
                                                                    .productsAmount(5)
