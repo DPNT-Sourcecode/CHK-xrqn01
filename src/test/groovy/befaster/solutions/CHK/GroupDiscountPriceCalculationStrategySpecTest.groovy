@@ -33,14 +33,22 @@ class GroupDiscountPriceCalculationStrategySpecTest extends Specification {
           result.getPriceOfDiscountedProducts() == expectedPrice as int
 
         where:
-          givenProducts                                                            || expectedRemainingProducts                                  | expectedPrice
-          null                                                                     || []                                                         | 0
-          []                                                                       || []                                                         | 0
-          [PRODUCT, INVALID_PRODUCT]                                               || [PRODUCT, INVALID_PRODUCT]                                 | 0
-          [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                                     || [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                       | 0
-          [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                    || [INVALID_PRODUCT, PRODUCT] * REQUIRED_PRODUCTS_AMOUNT      | 0
-          [FREE_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT)                  || [PRODUCT] * REQUIRED_PRODUCTS_AMOUNT                       | 0
-          [FREE_PRODUCT, INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) || [INVALID_PRODUCT] + ([PRODUCT] * REQUIRED_PRODUCTS_AMOUNT) | 0
+          givenProducts                                                        || expectedRemainingProducts                      | expectedPrice
+          null                                                                 || []                                             | 0
+          []                                                                   || []                                             | 0
+          [NON_APPLICABLE_PRODUCT]                                             || [NON_APPLICABLE_PRODUCT]                       | 0
+          [APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT]                       || [APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] | 0
+          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_B, APPLICABLE_PRODUCT_B, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_B, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_B, APPLICABLE_PRODUCT_C, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_A, NON_APPLICABLE_PRODUCT] || [NON_APPLICABLE_PRODUCT]                       | DISCOUNTED_PRICE
+        and:
+          [APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_C]   || [APPLICABLE_PRODUCT_A]                         | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_A]   || [APPLICABLE_PRODUCT_A]                         | DISCOUNTED_PRICE
+          [APPLICABLE_PRODUCT_C, APPLICABLE_PRODUCT_A, APPLICABLE_PRODUCT_B]   || [APPLICABLE_PRODUCT_A]                         | DISCOUNTED_PRICE
     }
 
 }
