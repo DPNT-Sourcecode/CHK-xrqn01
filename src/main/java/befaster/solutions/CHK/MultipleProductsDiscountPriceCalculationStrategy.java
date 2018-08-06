@@ -43,4 +43,9 @@ final class MultipleProductsDiscountPriceCalculationStrategy implements PriceCal
         return new PriceCalculationResult(remainingProducts, discountPriceTotal);
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(productsAmount) + productId + " for " + discountPrice;
+    }
+
 }

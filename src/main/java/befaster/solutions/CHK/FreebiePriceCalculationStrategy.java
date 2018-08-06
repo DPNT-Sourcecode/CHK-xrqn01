@@ -8,10 +8,10 @@ import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 
 import static befaster.solutions.CHK.PriceCalculationStrategy.PriceCalculationResult.nothingCalculated;
-import static lombok.AccessLevel.PRIVATE;
+import static lombok.AccessLevel.PROTECTED;
 
 @Builder
-@RequiredArgsConstructor(access = PRIVATE)
+@RequiredArgsConstructor(access = PROTECTED)
 class FreebiePriceCalculationStrategy implements PriceCalculationStrategy {
 
     private final char productId;
@@ -51,6 +51,11 @@ class FreebiePriceCalculationStrategy implements PriceCalculationStrategy {
                                  remainingProducts.setCount(productToRemoveEntry.getElement(), newCount);
                              });
         return new PriceCalculationResult(remainingProducts, 0);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(requiredProductsAmount) + productId + " get one " + freeProductId + " free";
     }
 
 }
